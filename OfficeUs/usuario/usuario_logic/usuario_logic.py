@@ -12,7 +12,7 @@ def create_oficina(form):
     oficina.save()
     return ()
 
-#Get todas las usuarios
+#Get todas las usuario
 def get_usuarios():
     usuarios = Usuario.objects.all()
     return (usuarios)
