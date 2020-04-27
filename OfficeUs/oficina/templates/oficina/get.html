@@ -1,0 +1,95 @@
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Yellowtail&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<style>
+		#buscar{
+			height:50px;
+			width:94%;
+			margin:20px;
+			outline:0;
+			border:2px solid lightgray;
+			border-radius: 16px;
+			background-color:#f5f5f5;
+		}
+		.catalogo{
+			margin:20px;
+			display: flex;
+			flex-wrap: wrap; 
+		}
+		.card-plus{
+			width:270px;
+			height:410px;
+			margin:10px;
+			border:1px solid #a9edfc;
+			border-radius: 8px;
+		}
+		.imagen-catalogo{
+			width:220px;
+			height:200px;
+			display:block;
+			margin-left:auto;
+			margin-right:auto;
+			margin-top: 12px
+		}
+		.botoncito{
+			background-color: lightgray;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+			<form class="buscar">
+				<input id="buscar" type="text" placeholder="  Buscar oficina" onkeypress="return event.keyCode!=13">
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+				{% if lista %}
+				<div class="catalogo">
+					{% for oficina in lista %}
+					<div class="card card-plus">
+						<img src={{oficina.foto}} class="imagen-catalogo">
+						<div class="card-body">
+							<h5 class="card-title">{{oficina.precio}}</h5>
+							<p class="card-text">{{oficina.nombre}} {{oficina.tipo_contrato}}</p>
+							<p class="card-text"><small class="text-muted">{{oficina.descripcion}}</small></p>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+				{% else %}
+				<p>No hay referencias.</p>
+				{% endif %}
+			</div>
+		</div>
+    </div>
+</body>
+<footer>
+	<button class="botoncito" id="atras" onClick="pasar_pagina(0)">{{num_atras}}</button>
+	<button class="botoncito" id="alante" onClick="pasar_pagina(1)">{{num_alante}}</button>
+</footer>
+</html>
+<script>
+	var num_atras = 0;
+	var num_alante = 2;
+	function pasar_pagina(n){
+		var url_act = window.location.href;
+		var num_act = parseInt(url_act.slice(url_act.lastIndexOf("/")+1,url_act.length),10);
+		n==1 ? num_act +=1 : num_act -=1;
+		window.location.href =  url_act.slice(0, url_act.lastIndexOf("/")+1)+num_act.toString(10);
+		num_atras = num_act-1;
+		num_alante = num_act+1;
+	}
+	document.getElementById('buscar').onkeydown = function(event) {
+		texto = document.getElementById('buscar').value;
+		if (event.keyCode== 13) {
+			window.location.pathname = '/oficinas/get/'+texto+'/0';
+		}
+	}
+</script>

@@ -6,8 +6,6 @@ from . import views
 
 urlpatterns = [
     path('usuario/', views.usuario_list),
-    path('oficina/', views.oficina_list),
-    path('oficinacreate/', csrf_exempt(views.create_oficina), name='oficinaCreate'),
-    path('usuariocreate/', csrf_exempt(views.create_user), name='usuarioCreate'),
+    path('usuariocreate/', views.usuario_create, name='usuario_create'),
 
 ]
