@@ -71,20 +71,19 @@
     </div>
 </body>
 <footer>
+	{% if num_atras > 0 %}
 	<button class="botoncito" id="atras" onClick="pasar_pagina(0)">{{num_atras}}</button>
+	{% endif %}
+	{{pagina}}
 	<button class="botoncito" id="alante" onClick="pasar_pagina(1)">{{num_alante}}</button>
 </footer>
 </html>
 <script>
-	var num_atras = 0;
-	var num_alante = 2;
 	function pasar_pagina(n){
 		var url_act = window.location.href;
 		var num_act = parseInt(url_act.slice(url_act.lastIndexOf("/")+1,url_act.length),10);
 		n==1 ? num_act +=1 : num_act -=1;
 		window.location.href =  url_act.slice(0, url_act.lastIndexOf("/")+1)+num_act.toString(10);
-		num_atras = num_act-1;
-		num_alante = num_act+1;
 	}
 	document.getElementById('buscar').onkeydown = function(event) {
 		texto = document.getElementById('buscar').value;

@@ -8,4 +8,4 @@ class Usuario(models.Model):
     barrio = models.CharField(max_length=30)
     foto = models.CharField(max_length=100)
     def __str__(self):
-        return '%s-%s-%s' % (self.nombre, self.correo, self.barrio)
+        return '%s / %s' % (self.correo, self.contraseña)
