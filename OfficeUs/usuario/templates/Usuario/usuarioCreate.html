@@ -46,18 +46,38 @@
 
 <div class="row">
 	<div class="col-md-10">
-		<div class="card centrar" style="width:80%;height:400px;border:3px solid #a9edfc;border-radius: 35px;">
+		<div class="card centrar" style="width:80%;height:785px;border:3px solid #a9edfc;border-radius: 35px;">
 			<div class="card-body">
 				<h1 id="titulo2">Registrar usuario</h1><br>
-				<form method="post">{% csrf_token %}
+				<form method="POST">{% csrf_token %}
+
+					<label>Nombre:</label>
+					<br>
+					<input class="inputform" type="text" placeholder="  Ingrese su nombre" name="nombre"><br><br>
 					<label>Correo:</label>
 					<br>
-					<input class="inputform" type="text" placeholder="  Ingrese su correo" name="correo"><br><br>
-					<label>Contraseña:</label><br>
-					<input class="inputform" type="password" placeholder="  Ingrese su contraseña" name="contraseña">
-					<br><br>
-					<button type="submit" class="btn btn-primary" id="botonIngresar" style="display:block;margin-left:auto;margin-right:auto;">Ingresar</button>
+					<input class="inputform" type="text" placeholder="  Ingrese su correo" name="correo"><br>
+					<br>
+					<label>Contraseña:</label>
+					<br>
+					<input class="inputform" type="password" placeholder="  Ingrese su contraseña" name="contraseña"><br>
+					<br>
+					<label>Direccion:</label>
+					<br>
+					<input class="inputform" type="text" placeholder="  Ingrese su direccion" name="direccion"><br>
+					<br>
+					<label>Barrio:</label>
+					<br>
+					<input class="inputform" type="text" placeholder="  Ingrese su barrio" name="barrio"><br>
+					<br>
+					<label>foto:</label>
+					<br>
+					<input class="inputform" type="text" placeholder="  Ingrese su foto" name="foto"><br>
+					<br>
+					<br>
+					<button type="submit" class="btn btn-primary" id="botonIngresar" style="display:block;margin-left:auto;margin-right:auto;">Registrarse</button>
 				</form>
+
 			</div>
 		</div>
 	</div>

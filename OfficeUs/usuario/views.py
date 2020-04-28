@@ -22,12 +22,12 @@ def usuario_create(request):
             if rta=='Usuario creado':
                 messages.add_message(request, messages.SUCCESS, rta)
                 print(messages)
-                return HttpResponseRedirect(reverse('usuarioCreate'))
+                return HttpResponseRedirect(reverse('usuariocreate'))
             else:
                 messages.add_message(request, messages.ERROR, rta)
                 print(messages)
                 messages.error(request, "Error")
-                return HttpResponseRedirect(reverse('usuarioCreate'))
+                return HttpResponseRedirect(reverse('usuariocreate'))
         else:
             print(form.errors)
     else:
