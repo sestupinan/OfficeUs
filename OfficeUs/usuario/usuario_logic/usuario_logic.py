@@ -12,4 +12,4 @@ def get_usuarios():
 def create_user(form):
     user = form.save()
     user.save()
-    return ()
+    return ('Usuario creado')
