@@ -8,7 +8,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	<style>
         #titulo2{
-        	text-align:center
+        	margin-left:7px;
         }
 
 		.carousel-plus{
@@ -18,7 +18,7 @@
 		.inputform{
 			border-radius: 35px;
 			border:2px solid gray;
-			width:90%;
+			width:80%;
 			height:46px;
 			outline:0;
 		}
@@ -36,50 +36,66 @@
 		#botonIngresar{
 			outline:0;
 		}
+		body {
+			background-image:url('https://i.pinimg.com/originals/94/26/01/942601fcae9bb10c21b0537a3750d65e.gif');
+			background-repeat:no-repeat;
+			background-position: right;
+			background-size: 65%;
+		}
 
 	</style>
 </head>
 <body>
-		{% block header %}
+	{% block header %}
 	{% include 'header_antes_de_inicio_de_sesion.html' %}
 	{% endblock header %}
-
-<div class="row">
-	<div class="col-md-10">
-		<div class="card centrar" style="width:80%;height:785px;border:3px solid #a9edfc;border-radius: 35px;">
-			<div class="card-body">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="centrar" style="width:80%;height:785px;">
+				<div class="card-body">
 				<h1 id="titulo2">Registrar usuario</h1><br>
 				<form method="POST">{% csrf_token %}
-
-					<label>Nombre:</label>
-					<br>
-					<input class="inputform" type="text" placeholder="  Ingrese su nombre" name="nombre"><br><br>
-					<label>Correo:</label>
-					<br>
-					<input class="inputform" type="text" placeholder="  Ingrese su correo" name="correo"><br>
-					<br>
-					<label>Contraseña:</label>
-					<br>
-					<input class="inputform" type="password" placeholder="  Ingrese su contraseña" name="contraseña"><br>
-					<br>
-					<label>Direccion:</label>
-					<br>
-					<input class="inputform" type="text" placeholder="  Ingrese su direccion" name="direccion"><br>
-					<br>
-					<label>Barrio:</label>
-					<br>
-					<input class="inputform" type="text" placeholder="  Ingrese su barrio" name="barrio"><br>
-					<br>
-					<label>foto:</label>
-					<br>
-					<input class="inputform" type="text" placeholder="  Ingrese su foto" name="foto"><br>
-					<br>
-					<br>
-					<button type="submit" class="btn btn-primary" id="botonIngresar" style="display:block;margin-left:auto;margin-right:auto;">Registrarse</button>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="nombre">Nombre</label><br>
+							<input class="inputform" type="text" placeholder="  Ingrese su nombre" name="nombre">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="precio">Correo</label><br>
+							<input class="inputform" type="text" placeholder="  Ingrese su correo" name="correo">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="nombre">Contraseña</label><br>
+							<input class="inputform" type="password" placeholder="  Ingrese su contraseña" name="contraseña">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="precio">Dirección</label><br>
+							<input class="inputform" type="text" placeholder="  Ingrese su direccion" name="direccion">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="nombre">Barrio</label><br>
+							<input class="inputform" type="text" placeholder="  Ingrese su barrio" name="barrio">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="precio">Foto</label><br>
+							<input class="inputform" type="text" placeholder="  Ingrese su foto" name="foto">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<button type="submit" class="btn btn-primary" id="botonIngresar" style="display:block;margin-left:auto;margin-right:7%;">Registrarse</button>
+						</div>
+					</div>
 				</form>
 
 			</div>
 		</div>
+	</div>
+	<div class="col-md-4">
 	</div>
   </div>
 </body>
