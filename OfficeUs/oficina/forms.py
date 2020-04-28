@@ -6,11 +6,13 @@ class OficinaForm(forms.ModelForm):
         model = Oficina
         fields = [
             'foto',
+            'foto360',
             'nombre',
             'precio',
             'tipo_contrato',
             'ubicacion',
             'localidad',
+            
         ]
 
         labels = {
