@@ -1,7 +1,7 @@
 from django.db import models
 from ..models import Oficina
 #Get todas las oficinas
-numero_elementos_por_pagina = 3
+numero_elementos_por_pagina = 15
 
 def get_oficinas(pagina):
 	q='select * from '+Oficina.objects.model._meta.db_table+' limit %s offset %s'

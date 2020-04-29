@@ -1,0 +1,404 @@
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Yellowtail&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<style> 
+    .titulo{
+      color:#94d4e4;
+    }
+
+    .custom-radio{
+      margin-left:50px;display:block
+    }
+
+    .custom-control-label{
+      display:block;
+    }
+
+	</style>
+</head>
+<body>
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"aria-hidden="true" >
+  <div class="modal-dialog" role="document" style="right:250px">
+    <div class="modal-content" style="width:1000px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </button>
+        <span area-hidden="true">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form class="form-inline my-2 my-lg-0" id="encuesta">
+
+          <div class="col-md-12" id="1">
+            <h4 class="titulo" style="text-align:center;margin:10px;z-index:1;position:relative">Antes de que sigas navegando por la página nos gustaría que nos comentaras tus preferencias para así recomendarte los mejores espacios para trabajar.
+            </h4>
+            <h5 style="text-align:center;margin-left:40px;z-index:1;position:relative">Solo te llevará responder unas cuantas preguntas</h5>
+            <img style="margin-top:-50px;width:70%;text-align:center;z-index:-1;margin-left: 90px;"src="https://cdn.dribbble.com/users/1308090/screenshots/5207532/flatsy_computerguy_dribbble.gif">
+          </div>
+
+
+            <div class="col-md-12" id="2">
+              <h2 class="titulo">¿Qué tan imprescindible considera cada una de las siguientes características para su lugar de trabajo?</h2>
+              <div class="row">
+              <div class="col-md-6">
+                <br>
+                <h5>Parqueadero incluido</h5>
+                <div class="custom-radio">
+                  <input  type="radio" class="custom-control-input" id="parq" name="parqueadero">
+                  <label style="display:block" class="custom-control-label" for="parq" >Imprescindible</label>
+                </div>
+                <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="parq1" name="parqueadero">
+                 <label style="display:block" class="custom-control-label" for="parq1">Me da igual</label>
+               </div>
+               <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="parq2" name="parqueadero">
+                 <label style="display:block" class="custom-control-label" for="parq2">Nada imprescindible</label>
+               </div>
+               <br>
+             </div>
+             <div class="col-md-6">
+              <br>
+              <h5>Ubicación cerca del transporte público</h5>
+              <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="trans" name="transporte">
+                <label style="display:block" class="custom-control-label" for="trans">Imprescindible</label>
+              </div>
+              <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="trans1" name="transporte">
+                <label style="display:block" class="custom-control-label" for="trans1">Me da igual</label>
+              </div>
+              <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="trans2" name="transporte">
+                <label style="display:block" class="custom-control-label" for="trans2">Nada imprescindible</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+              <div class="col-md-6">
+                <br>
+                <h5>Wifi de alta velocidad</h5>
+                <div class="custom-radio">
+                  <input type="radio" class="custom-control-input" id="wifi" name="wifi">
+                  <label style="display:block" class="custom-control-label" for="wifi">Imprescindible</label>
+                </div>
+                <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="wifi1" name="wifi">
+                 <label style="display:block" class="custom-control-label" for="wifi1">Me da igual</label>
+               </div>
+               <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="wifi2" name="wifi">
+                 <label style="display:block" class="custom-control-label" for="wifi2">Nada imprescindible</label>
+               </div>
+               <br>
+             </div>
+             <div class="col-md-6" >
+              <br>
+              <h5>Aire acondicionado</h5>
+              <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="aire" name="aire-acond">
+                <label style="display:block" class="custom-control-label" for="aire">Imprescindible</label>
+              </div>
+              <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="aire1" name="aire-acond">
+                <label style="display:block" class="custom-control-label" for="aire1">Me da igual</label>
+              </div>
+              <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="aire2" name="aire-acond">
+                <label style="display:block" class="custom-control-label" for="aire2">Nada imprescindible</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12" id="3">
+          <h2 class="titulo">¿Qué tan imprescindible considera cada una de las siguientes características para su lugar de trabajo?</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <br>
+              <h5>Calefacción</h5>
+              <div class="custom-radio">
+                <input style="left:-200px;"type="radio" class="custom-control-input" id="cal" name="calefaccion">
+                <label style="display:block" class="custom-control-label" for="cal" >Imprescindible</label>
+                </div>
+                <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="cal1" name="calefaccion">
+                 <label style="display:block" class="custom-control-label" for="cal1">Me da igual</label>
+               </div>
+               <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="cal2" name="calefaccion">
+                 <label style="display:block" class="custom-control-label" for="cal2">Nada imprescindible</label>
+               </div>
+               <br>
+             </div>
+             <div class="col-md-6">
+              <br>
+              <h5>Vista al exterior</h5>
+              <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="vist" name="vista">
+                <label style="display:block" class="custom-control-label" for="vist">Imprescindible</label>
+              </div>
+              <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="vist1" name="vista">
+                <label style="display:block" class="custom-control-label" for="vist1">Me da igual</label>
+              </div>
+              <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="vist2" name="vista">
+                <label style="display:block" class="custom-control-label" for="vist2">Nada imprescindible</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+              <div class="col-md-6">
+                <br>
+                <h5>Lockers personales</h5>
+                <div class="custom-radio">
+                  <input type="radio" class="custom-control-input" id="locker" name="lockers">
+                  <label style="display:block" class="custom-control-label" for="locker">Imprescindible</label>
+                </div>
+                <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="locker1" name="lockers">
+                 <label style="display:block" class="custom-control-label" for="locker1">Me da igual</label>
+               </div>
+               <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="locker2" name="lockers">
+                 <label style="display:block" class="custom-control-label" for="locker2">Nada imprescindible</label>
+               </div>
+               <br>
+             </div>
+             <div class="col-md-6">
+              <br>
+                <h5>Eventos</h5>
+                <div class="custom-radio">
+                  <input type="radio" class="custom-control-input" id="event" name="evento">
+                  <label style="display:block" class="custom-control-label" for="event">Imprescindible</label>
+                </div>
+                <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="event1" name="evento">
+                 <label style="display:block" class="custom-control-label" for="event">Me da igual</label>
+               </div>
+               <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="event2" name="evento">
+                 <label style="display:block" class="custom-control-label" for="event2">Nada imprescindible</label>
+               </div>
+               <br>
+             </div>
+          </div>
+        </div>
+
+        <div class="col-md-12" id="4">
+          <h2 class="titulo">¿Qué tan imprescindible considera la inclusión del siguiente equipamiento en su lugar de trabajo?</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <br>
+              <h5>Fotocopiadora</h5>
+              <div class="custom-radio">
+                <input style="left:-200px;"type="radio" class="custom-control-input" id="foto" name="fotocopiadora">
+                <label style="display:block" class="custom-control-label" for="foto" >Imprescindible</label>
+                </div>
+                <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="foto1" name="fotocopiadora">
+                 <label style="display:block" class="custom-control-label" for="foto1">Me da igual</label>
+               </div>
+               <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="foto2" name="fotocopiadora">
+                 <label style="display:block" class="custom-control-label" for="foto2">Nada imprescindible</label>
+               </div>
+               <br>
+             </div>
+             <div class="col-md-6">
+              <br>
+              <h5>Impresora</h5>
+              <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="imp" name="impresora">
+                <label style="display:block" class="custom-control-label" for="imp">Imprescindible</label>
+              </div>
+              <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="imp1" name="impresora">
+                <label style="display:block" class="custom-control-label" for="imp1">Me da igual</label>
+              </div>
+              <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="imp2" name="impresora">
+                <label style="display:block" class="custom-control-label" for="imp2">Nada imprescindible</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+              <div class="col-md-6">
+                <br>
+                <h5>Monitor dual</h5>
+                <div class="custom-radio">
+                  <input type="radio" class="custom-control-input" id="monitor" name="monitor-dual">
+                  <label style="display:block" class="custom-control-label" for="monitor">Imprescindible</label>
+                </div>
+                <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="monitor1" name="monitor-dual">
+                 <label style="display:block" class="custom-control-label" for="monitor1">Me da igual</label>
+               </div>
+               <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="monitor2" name="monitor-dual">
+                 <label style="display:block" class="custom-control-label" for="monitor2">Nada imprescindible</label>
+               </div>
+               <br>
+             </div>
+             <div class="col-md-6">
+              <br>
+                <h5>Proyector</h5>
+                <div class="custom-radio">
+                  <input type="radio" class="custom-control-input" id="proyect" name="proyector">
+                  <label style="display:block" class="custom-control-label" for="proyect">Imprescindible</label>
+                </div>
+                <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="proyect1" name="proyector">
+                 <label style="display:block" class="custom-control-label" for="proyect1">Me da igual</label>
+               </div>
+               <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="proyect2" name="proyector">
+                 <label style="display:block" class="custom-control-label" for="proyect2">Nada imprescindible</label>
+               </div>
+               <br>
+             </div>
+          </div>
+        </div>
+
+        <div class="col-md-12" id="5">
+          <h2 class="titulo">¿Qué otras facilidades considera imprescindibles?</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <br>
+              <h5>Café gratis</h5>
+              <div class="custom-radio">
+                <input style="left:-200px;"type="radio" class="custom-control-input" id="coffe" name="cafe">
+                <label style="display:block" class="custom-control-label" for="coffe" >Imprescindible</label>
+                </div>
+                <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="coffe1" name="cafe">
+                 <label style="display:block" class="custom-control-label" for="coffe1">Me da igual</label>
+               </div>
+               <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="coffe2" name="cafe">
+                 <label style="display:block" class="custom-control-label" for="coffe2">Nada imprescindible</label>
+               </div>
+               <br>
+             </div>
+             <div class="col-md-6">
+              <br>
+              <h5>Agua para beber gratis</h5>
+              <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="awa" name="agua">
+                <label style="display:block" class="custom-control-label" for="awa">Imprescindible</label>
+              </div>
+              <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="awa1" name="agua">
+                <label style="display:block" class="custom-control-label" for="awa1">Me da igual</label>
+              </div>
+              <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="awa2" name="agua">
+                <label style="display:block" class="custom-control-label" for="awa2">Nada imprescindible</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+              <div class="col-md-6">
+                <br>
+                <h5>Zona Dog-friendly</h5>
+                <div class="custom-radio">
+                  <input type="radio" class="custom-control-input" id="dogf" name="dog">
+                  <label style="display:block" class="custom-control-label" for="dogf">Imprescindible</label>
+                </div>
+                <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="dogf" name="dog">
+                 <label style="display:block" class="custom-control-label" for="dogf1">Me da igual</label>
+               </div>
+               <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="dogf2" name="dog">
+                 <label style="display:block" class="custom-control-label" for="dogf2">Nada imprescindible</label>
+               </div>
+               <br>
+             </div>
+             <div class="col-md-6">
+              <br>
+                <h5>Área de Chill-out</h5>
+                <div class="custom-radio">
+                  <input type="radio" class="custom-control-input" id="chil" name="chill">
+                  <label style="display:block" class="custom-control-label" for="chil">Imprescindible</label>
+                </div>
+                <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="chil1" name="chill">
+                 <label style="display:block" class="custom-control-label" for="chil1">Me da igual</label>
+               </div>
+               <div class="custom-radio">
+                 <input type="radio" class="custom-control-input" id="chil2" name="chill">
+                 <label style="display:block" class="custom-control-label" for="chil2">Nada imprescindible</label>
+               </div>
+               <br>
+             </div>
+          </div>
+        </div>
+
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onClick="pasar_pag(1)" id="atras" style="visibility:hidden">atrás</button>
+        <button type="button" class="btn btn-primary" onClick="pasar_pag(0)" id="next">Siguiente</button>
+        <button  type="submit" type="button" class="btn btn-primary" onClick="terminar()" id="end" style="visibility:hidden;display:none;">Terminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<script>
+  var limit = 5;
+  var n = 1;
+  for(var i=2;i<limit+1;i++)
+  {
+    document.getElementById(i.toString(10)).style.visibility="hidden";
+    document.getElementById(i.toString(10)).style.display="none";
+  }
+
+  function pasar_pag(m){
+    //Actualiza la pregunta
+    document.getElementById(n.toString(10)).style.visibility="hidden";
+    document.getElementById(n.toString(10)).style.display="none";
+    m==0? n=n+1: n=n-1;
+
+    //Actualiza el botón de atrás
+    if(n==1)
+      document.getElementById('atras').style.visibility="hidden";
+    else document.getElementById('atras').style.visibility="visible";
+
+    //Actualiza la pregunta
+    document.getElementById(n.toString(10)).style.visibility="visible";
+    document.getElementById(n.toString(10)).style.display="";
+
+    if(n==limit)
+    {
+      document.getElementById('next').style.visibility="hidden";
+      document.getElementById('next').style.display="none";
+      document.getElementById('end').style.display="";
+      document.getElementById('end').style.visibility="visible";  
+    }
+    else{
+      document.getElementById('next').style.visibility="visible";
+      document.getElementById('next').style.display="";
+      document.getElementById('end').style.display="none";
+      document.getElementById('end').style.visibility="hidden";
+    }
+  }
+  function terminar(){
+    $('#exampleModalLong').modal('hide');
+  }
+    $( document ).ready(function() {
+
+});
+</script>

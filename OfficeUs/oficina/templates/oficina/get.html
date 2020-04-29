@@ -35,12 +35,16 @@
 		.botoncito{
 			background-color: lightgray;
 		}
+		
 	</style>
 </head>
 <body>
 	{% block header %}
 	{% include 'header_despues.html' %}
 	{% endblock header %}
+	{% block layout %}
+	{% include 'encuesta.html' %}
+	{% endblock layout %}
 <div class="container">
 	<div class="row">
 		<div class="col-md-2"></div>
@@ -82,8 +86,13 @@
 </footer>
 </html>
 <script>
+	var url_act = window.location.href;
+    $(window).on('load',function(){
+    	if(url_act.slice(url_act.lastIndexOf("=")+1,url_act.length)==2)
+    		$('#exampleModalLong').modal('show');
+    });
 	function pasar_pagina(n){
-		var url_act = window.location.href;
+		
 		var num_act = parseInt(url_act.slice(url_act.lastIndexOf("/")+1,url_act.length),10);
 		n==1 ? num_act +=1 : num_act -=1;
 		window.location.href =  url_act.slice(0, url_act.lastIndexOf("/")+1)+num_act.toString(10);
