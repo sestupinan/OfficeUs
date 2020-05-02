@@ -12,6 +12,9 @@ def create_oficina(form):
     oficina.save()
     return ()
 
+def get_oficina(ide):
+	return Oficina.objects.get(id=ide)
+
 def get_oficinas_dado_una_palabra_clave(palabra,pagina):
 	q='select * from '+Oficina.objects.model._meta.db_table+' as p where p.nombre = %s limit %s offset %s'
 	return Oficina.objects.raw(q,[palabra,numero_elementos_por_pagina,pagina*numero_elementos_por_pagina])

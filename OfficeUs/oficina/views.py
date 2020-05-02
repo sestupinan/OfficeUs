@@ -15,6 +15,18 @@ def get(request,pagina):
 	context= {'lista':lista,'pagina':pagina+1,'num_atras':pagina,'num_alante':pagina+2}
 	return HttpResponse(template.render(context,request))
 
+def get_oficina_dado_id(request,ide):
+    template=loader.get_template('oficina/detail.html')
+    oficina = get_oficina(ide)
+    direccion = str(oficina.ubicacion).split(",")
+    lista11 = {"Parqueadero incluido":0,"Ubicación cerca del transporte público":1}
+    lista12 = {"Wifi de alta velocidad":oficina.wifi,"Aire acondicionado":oficina.aire,"Calefacción":oficina.calefaccion,"Lockers personales":oficina.locker,"Vista al exterior":oficina.vista}
+    lista13 = {"Fotocopiadora":oficina.fotocopiadora,"Impresora":oficina.impresora,"Monitor dual":oficina.monitordual, "Monitor único": oficina.monitorunico,"Proyector":oficina.proyector, "Scanner":oficina.scanner}
+    lista14 = {"Café  gratis":oficina.cafe,"Agua para beber gratis":oficina.agua,"Área de Chill-out":oficina.chillout, "Zona Dog-friendly":oficina.dog, "Eventos":oficina.eventos}
+    context= {'calle':direccion[0],'carrera':direccion[1],'numero':direccion[2],'lista1':lista11,'lista2':lista12,'lista3':lista13,'lista4': lista14,'oficina':oficina}
+    return HttpResponse(template.render(context,request))
+
+
 def get_oficina_dado_keyword(request,keyword,pagina):
     template=loader.get_template('oficina/get.html')
     lista = get_oficinas_dado_una_palabra_clave(keyword,pagina)

@@ -1,0 +1,218 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <style>
+    p{
+      font-family:'Quicksand';
+    }
+    .contactar{
+      outline:0;
+      text-decoration: none;
+      border:0;
+      border: solid 4px black;
+      background-color: white;
+      width:100%;
+      padding:10px;
+    }
+    .car-image{
+      outline:0;
+      text-decoration: none;
+      border:0 none;
+      background-color: white;
+      color:lightgray;
+    }
+    .listaa{
+      visibility: hidden;
+      display:none;
+    }
+    button:focus{
+      outline:0;
+    }
+  </style>
+</head>
+<body>
+  {% block header %}
+  {% include 'header_despues.html' %}
+  {% endblock header %}
+
+  <div class="container">
+    <div class="row" style="height: 40px"></div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <iframe id="360" width="90%" height="400px" allowFullScreen="true" style="display:block; margin-left:auto; margin-right:auto; border:0 none; max-width:880px;box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 20px, rgba(0, 0, 0, 0.23) 0px 3px 20px;" src={{oficina.foto360}}></iframe>
+          <img style="visibility:hidden;display:none; margin-left:auto; margin-right:auto;" id="pic" width="90%" height="400px" src={{oficina.foto}} >
+        </div>
+        <div class="row">
+          <div style="display: block; margin-left: auto; margin-right: auto; margin-top:20px">
+            <a onClick="imagen('pic')"><img id="picH" src={{oficina.foto}} width="70px" height="50px" style="opacity: 50%"></a>
+            <a onClick="imagen('360')"><img id="360H" src="https://officesnapshots.com/wp-content/uploads/2016/06/penguin-random-house-office-design-4-700x507.jpg" width="70px" height="50px"></a>
+          </div>
+          <br><br><br>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <h5 style="font-family:'Quicksand';">Localidad</h5>
+                <h6 style="font-weight: 400; font-family:'Quicksand';">{{oficina.localidad}}</h6>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <h5 style="font-family:'Quicksand';">Ubicación</h5>
+                <h6 style="font-weight: 400;font-family:'Quicksand'; ">Calle {{calle}} #{{carrera}}-{{numero}}</h6>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <h5 style="font-family:'Quicksand';">Ubicación en mapa</h5>
+                <a style="color:black" onClick="desplegar_lista(0)"><h5 id="boton0">+</h5></a>
+              </li>
+              <div class="row">
+                <div class="col-md-12">
+                  <iframe id="0" width="100%" height="450" frameborder="0" style="border:0;visibility: hidden; display:none" src="https://www.google.com/maps/embed/v1/place?q=Colombia%20Bogot%C3%A1%20Calle%20{{calle}}%20Carrera%20{{carrera}}%20%23{{numero}}-3&key=AIzaSyCs9n80GwxYIQB3Ph0hQqh-mo2uTm-OUuM"></iframe>
+                </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <h2 style="font-family:'Quicksand';"><b>{{oficina.nombre}}<b></h2>
+        <br>
+        <li style="border:none;" class="list-group-item d-flex justify-content-between align-items-center">
+          <h4>${{oficina.precio}}</h4>
+          <a style="color:lightgray;font-weight: 600;">/{{oficina.tipo_contrato}}</a>
+        </li>
+        <br>
+        <div>
+          <i id="calificacion1" class="py-2 px-1 rate-popover fas fa-star" data-index="0" data-html="true" data-toggle="popover" data-placement="top" title="" data-original-title="Very bad"></i>
+          <i id="calificacion2" class="py-2 px-1 rate-popover fas fa-star" data-index="1" data-html="true" data-toggle="popover" data-placement="top" title="" data-original-title="Poor"></i>
+          <i id="calificacion3" class="py-2 px-1 rate-popover fas fa-star" data-index="2" data-html="true" data-toggle="popover" data-placement="top" title="" data-original-title="OK"></i>
+          <i id="calificacion4" class="py-2 px-1 rate-popover fas fa-star" data-index="3" data-html="true" data-toggle="popover" data-placement="top" title="" data-original-title="Good"></i>
+          <i id="calificacion5" class="py-2 px-1 rate-popover fas fa-star" data-index="4" data-html="true" data-toggle="popover" data-placement="top" title="" data-original-title="Excellent" aria-describedby="tooltip116975"></i>
+        </div>
+        <br>
+        <p style="font-weight: 600;">{{oficina.descripcion}}</p>
+        <br>
+        <button class="contactar"><h5 style="font-family:'Quicksand';">Contactar arrendatario</h5></button>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <h5 style="font-family:'Quicksand';">Transporte</h5>
+            <a style="color:black" onClick="desplegar_lista(1)"><h5 id="boton1">+</h5></a>
+          </li>
+          <div id="1" style="visibility: hidden;display:none;">
+            {% for elemento, value in lista1.items %}
+            <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #fafafa;">
+              {% if value == 1 %}
+              <i class="fas fa-check" style="font-size:25px;color:#5dbcd2; margin-bottom: 10px;margin-right:10px"></i>
+              {% else %}
+              <i class="fas fa-times" style="font-size:25px;color: red; margin-bottom: 10px; margin-right:15px"></i>
+              {% endif %}
+              <h5 style="font-family:'Quicksand'; display:block; margin-left: 3px; margin-right: auto">{{elemento}}</h5>
+            </li>
+            {% endfor %}
+          </div>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <h5 style="font-family:'Quicksand';">Características</h5>
+            <a style="color:black" onClick="desplegar_lista(2)"><h5 id="boton2">+</h5></a>
+          </li>
+          <div id="2" style="visibility: hidden;display:none;">
+            {% for elemento, value in lista2.items %}
+            <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #fafafa;">
+              {% if value == 1 %}
+              <i class="fas fa-check" style="font-size:25px;color:#5dbcd2; margin-bottom: 10px;margin-right:10px"></i>
+              {% else %}
+              <i class="fas fa-times" style="font-size:25px;color: red; margin-bottom: 10px; margin-right:15px"></i>
+              {% endif %}
+              <h5 style="font-family:'Quicksand'; display:block; margin-left: 3px; margin-right: auto">{{elemento}}</h5>
+            </li>
+            {% endfor %}
+          </div>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <h5 style="font-family:'Quicksand';">Equipamiento</h5>
+            <a style="color:black" onClick="desplegar_lista(3)"><h5 id="boton3">+</h5></a>
+          </li>
+          <div id="3" style="visibility: hidden;display:none;">
+            {% for elemento, value in lista3.items %}
+            <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #fafafa;">
+              {% if value == 1 %}
+              <i class="fas fa-check" style="font-size:25px;color:#5dbcd2; margin-bottom: 10px;margin-right:10px"></i>
+              {% else %}
+              <i class="fas fa-times" style="font-size:25px;color: red; margin-bottom: 10px; margin-right:15px"></i>
+              {% endif %}
+              <h5 style="font-family:'Quicksand'; display:block; margin-left: 3px; margin-right: auto">{{elemento}}</h5>
+            </li>
+            {% endfor %}
+          </div>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <h5 style="font-family:'Quicksand';">Facilidades</h5>
+            <a style="color:black" onClick="desplegar_lista(4)"><h5 id="boton4">+</h5></a>
+          </li>
+          <div id="4" style="visibility: hidden;display:none;">
+            {% for elemento, value in lista4.items %}
+            <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #fafafa;">
+              {% if value == 1 %}
+              <i class="fas fa-check" style="font-size:25px;color:#5dbcd2; margin-bottom: 10px;margin-right:10px"></i>
+              {% else %}
+              <i class="fas fa-times" style="font-size:25px;color: red; margin-bottom: 10px; margin-right:15px"></i>
+              {% endif %}
+              <h5 style="font-family:'Quicksand'; display:block; margin-left: 3px; margin-right: auto">{{elemento}}</h5>
+            </li>
+            {% endfor %}
+          </div>
+        </ul>
+      </div>
+      <div class="col-md-1"></div>
+  </div>
+
+  <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+  <script type="text/javascript">
+    function imagen(n){
+      if(n=='pic'){
+        document.getElementById('360').style.visibility="hidden";
+        document.getElementById('360').style.display="none";
+        document.getElementById('360H').style.opacity="50%";
+        document.getElementById('picH').style.opacity="100%";
+        document.getElementById('pic').style.visibility="visible";
+        document.getElementById('pic').style.display="";
+      }
+      else{
+        document.getElementById('pic').style.visibility="hidden";
+        document.getElementById('pic').style.display="none";
+        document.getElementById('picH').style.opacity="50%";
+        document.getElementById('360H').style.opacity="100%";
+        document.getElementById('360').style.visibility="";
+        document.getElementById('360').style.display="block";
+      }
+    }
+    function desplegar_lista(n){
+      var el = document.getElementById(n.toString(10));
+      var id_boton = document.getElementById('boton'+n.toString(10)).innerHTML;
+      if("+"==id_boton){
+        el.style.visibility="visible";
+        el.style.display="";
+        document.getElementById('boton'+n.toString(10)).innerHTML = "-";
+      }
+      else{
+        el.style.visibility="hidden";
+        el.style.display="none";
+        document.getElementById('boton'+n.toString(10)).innerHTML = "+";
+      }
+    }
+    $(document).ready(function() {
+      for(var i=1; i<{{oficina.calificacion}}+1;i++){
+        document.getElementById('calificacion'+i.toString(10)).className="py-2 px-1 rate-popover fas fa-star amber-text";
+      }
+    });
+  </script>
+
+</body>
+</html>
