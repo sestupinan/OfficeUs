@@ -12,7 +12,7 @@ from .oficina_logic.oficina_logic import *
 def get(request,pagina):
     template=loader.get_template('oficina/get.html')
     lista = get_oficinas(pagina)
-    context= {'lista':lista,'pagina':pagina+1,'num_atras':pagina,'num_alante':pagina+2}
+    context= {'lista':lista,'pagina':pagina+1,'num_atras':pagina,'num_alante':pagina+2,'request':request.user}
     return HttpResponse(template.render(context,request))
 
 def get_oficina_dado_id(request,ide):
