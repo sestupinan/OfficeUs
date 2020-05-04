@@ -31,6 +31,6 @@ class Oficina(models.Model):
     agua = models.IntegerField(validators=[MaxValueValidator(1),MinValueValidator(0)])
     chillout = models.IntegerField(validators=[MaxValueValidator(1),MinValueValidator(0)])
     dog = models.IntegerField(validators=[MaxValueValidator(1),MinValueValidator(0)])
-    eventos  = models.IntegerField(validators=[MaxValueValidator(1),MinValueValidator(0)])
+    eventos = models.IntegerField(validators=[MaxValueValidator(1),MinValueValidator(0)])
     def __str__(self):
         return '%s-%s-%s' % (self.nombre, self.precio, self.tipo_contrato)

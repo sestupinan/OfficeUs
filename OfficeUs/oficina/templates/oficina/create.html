@@ -1,0 +1,264 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+
+    @keyframes example {
+      from  {width:63px;height:63px;}
+      to  {width:75px;height:75px;}
+    }
+    .ah{
+      width:63px;
+      height:63px;
+      background-color:white;
+      animation: example 2s infinite;
+      border:none;
+      outline: none;
+      position: absolute;
+      bottom:63%;
+      top:37%;
+    }
+
+    .card-plus{
+      padding:15px;
+      width:370px;
+      margin:15px;
+    }
+    label .cbb{
+      display:none;
+    }
+
+    .form-check-label{
+      background-color: #fafafa;
+      padding:10px;
+      border-radius: 20px;
+    }
+
+    .form-check-label .cb{
+      height: 22px;
+      width: 22px;
+      border: 2px solid lightgray;
+      display: inline-block;
+      margin-bottom: -5px;
+      position: relative;
+    }
+
+    [type=checkbox]:checked + .cb:before {
+      font-family: "Font Awesome 5 Free";
+      content: "\f14a";
+      font-weight: 900;
+      position: absolute;
+      font-size: 25px;
+      left:-2px;
+      top:-9px;
+      color:#6dde21;
+    }
+
+    .catalogo{
+      display: flex;
+      flex-wrap: wrap; 
+    }
+  </style>
+</head>
+<body>
+  {% block header %}
+  {% include 'header_despues.html' %}
+  {% endblock header %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-1">
+        <a id="patras" onClick="pasar(0)" style="visibility: hidden">
+          <img src="{% static 'images/left-arrow.png' %}" class="ah">
+        </a>
+      </div>
+      <div class="col-md-10">
+        <form class="needs-validation" style="margin: 35px" method="POST">{% csrf_token %}
+          <div id="parte1" >
+            <h1>Añadir oficina</h1>
+            <br>
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label for="validationTooltip01">Nombre</label>
+                <input type="text" name="nombre"class="form-control" id="validationTooltip01" placeholder="Nombre de la oficina" required>
+                <div class="valid-tooltip">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="validationTooltip02">Localidad</label>
+                <input type="text" name="localidad" class="form-control" id="validationTooltip02" placeholder="Localidad" required>
+                <div class="valid-tooltip">
+                  Looks good!
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label for="validationTooltip03">Precio</label>
+                <input type="number" name="precio" class="form-control" id="validationTooltip03" required>
+                <div class="invalid-tooltip">
+                  Please provide a valid city.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="validationTooltip04">Ubicación</label>
+                <div style="display:flex">
+                  <label style="margin-bottom:0px;margin-top:auto">Calle</label>
+                  <input type="number" class="form-control" id="validationTooltip04" style="margin-left:20px; margin-right:20px; width:70px" name="calle" required>
+                  <label style="margin-bottom:0px;margin-top:auto">Carrera</label>
+                  <input type="number" name="carrera" class="form-control" id="validationTooltip04" style="margin-left:20px; margin-right:20px; width:70px"   required>
+                  <label style="margin-bottom:0px;margin-top:auto">Número</label>
+                  <input type="number" name="numero" class="form-control" id="validationTooltip04" style="margin-left:20px; margin-right:20px; width:70px"  required>
+                </div>
+                <div class="invalid-tooltip">
+                  Please provide a valid state.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-row">
+                  <label for="unidad">Tipo de contrato</label>
+                    <select name="tipo_contrato" class="form-control">
+                      <option>Mensual</option>
+                      <option>Por horas</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                  <input type="text" name="foto" id="fot" style="visibility: hidden;display: none;" >
+                  <button style="margin-top:25px; margin-left:0px"  class="btn btn-primary" onClick="document.getElementById('upfile').click()">Añadir imagen <i class="fas fa-camera"></i></button>
+                  <input type="file" id="upfile" style='height: 0px;width: 0px; overflow:hidden;'>
+                </div>
+                <div class="form-row">
+                  <button style="margin-top:25px; margin-left:0px"  class="btn btn-primary" onClick="document.getElementById('upfile').click()">Añadir imagen 360°<i class="fas fa-street-view"></i></button>
+                </div>
+                
+              </div>
+              <div class="col-md-4">
+                <div class="form-row">
+                    <label for="validationTooltip05">Descripción</label>
+                    <textarea name="descripcion" class="form-control" id="validationTooltip05" style="height:100px; " required></textarea>
+                </div>
+              </div>
+            </div>
+
+
+            
+
+
+            
+
+
+          </div>
+          {% for key, value in lista.items %}
+          {% if forloop.first %}
+          <div id="parte2" class="catalogo" style="visibility: hidden;display: none">
+            {% elif forloop.counter == 3 %}
+            <div id="parte3" class="catalogo" style="visibility: hidden;display: none">
+              {% endif %}
+              <div class="card card-plus" >
+                <h5>{{key}}</h5>
+                <br>
+                {% for item in value%}
+                <label class="form-check-label">
+                  <input type="checkbox" true-value="1" false-value="0" class="cbb" name={{item.1}} value="1">
+                  <span class="cb"></span>
+                  <p style="margin-left: 3px; display: inline-block;margin-bottom: 0px">{{item.0}}</p>
+                </label>
+                <br>
+                {% endfor %}
+              </div>
+              {% if forloop.counter == 2%}
+            </div>
+            {% elif forloop.last %}
+            <div class="card" style="border:none">
+            <button class="btn btn-primary" style="height: 50px; position:absolute; bottom:67%;top:33%;left:40px" type="submit">Agregar oficina</button>
+          </div>
+          </div>
+        </form>
+        {% endif %}
+        {% endfor%}
+      </div>
+      <div class="col-md-1">
+        <a id="nxt" onClick="pasar(1)" >
+          <img id=":D" src="{% static 'images/right-arrow.svg' %}" class="ah">
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+<script>
+  var act = 1;
+  var num_pags=3;
+  function pasar(n){
+    var paginaeliminar =document.getElementById('parte'+act.toString(10));
+    paginaeliminar.style.visibility="hidden";
+    paginaeliminar.style.display="none";
+
+    if(n==1)act+=1;
+    else act -=1;
+
+    var el = document.getElementById('parte'+act.toString(10));
+    el.style.visibility="visible";
+    el.style.display="";
+
+    if(act>=num_pags) document.getElementById('nxt').style.visibility="hidden";
+    else if(act<=1) document.getElementById('patras').style.visibility="hidden";
+    else{
+      document.getElementById('patras').style.visibility="visible";
+      document.getElementById('nxt').style.visibility="visible";
+    }
+  }
+  $('document').ready(function () {
+    $('input[type=file]').on('change', function () {
+      console.log('AHHHHHHHHHHH');
+      var $files = $(this).get(0).files;
+
+      if ($files.length) {
+        if ($files[0].size > $(this).data('max-size') * 1024) {
+          console.log('Please select a smaller file');
+          return false;
+        }
+        console.log('Uploading file to Imgur..');
+        var apiUrl = 'https://api.imgur.com/3/image';
+        var apiKey = '55bb12ffd0aeba6';
+
+        var settings = {
+          async: false,
+          crossDomain: true,
+          processData: false,
+          contentType: false,
+          type: 'POST',
+          url: apiUrl,
+          headers: {
+            Authorization: "Client-ID " + apiKey,
+            Accept: 'application/json',
+          },
+          mimeType: 'multipart/form-data',
+        };
+
+        var formData = new FormData();
+        formData.append('image', $files[0]);
+        settings.data = formData;
+
+        $.ajax(settings).done(function (response) {
+          $('#fot').val((JSON.parse(response)).data.link);
+        });
+      }
+    });
+  });
+</script>
+</html>

@@ -10,10 +10,10 @@ from .oficina_logic.oficina_logic import *
 # Create your views here.
 
 def get(request,pagina):
-	template=loader.get_template('oficina/get.html')
-	lista = get_oficinas(pagina)
-	context= {'lista':lista,'pagina':pagina+1,'num_atras':pagina,'num_alante':pagina+2}
-	return HttpResponse(template.render(context,request))
+    template=loader.get_template('oficina/get.html')
+    lista = get_oficinas(pagina)
+    context= {'lista':lista,'pagina':pagina+1,'num_atras':pagina,'num_alante':pagina+2}
+    return HttpResponse(template.render(context,request))
 
 def get_oficina_dado_id(request,ide):
     template=loader.get_template('oficina/detail.html')
@@ -33,29 +33,15 @@ def get_oficina_dado_keyword(request,keyword,pagina):
     context= {'lista':lista,'pagina':pagina}
     return HttpResponse(template.render(context,request))
 
-def oficina_create(request):
+def create(request):
     if request.method == 'POST':
-        form = OficinaForm(request.POST)
-        if form.is_valid():
-            rta=create_oficina(form)
-            if rta=='Oficina creado':
-                messages.add_message(request, messages.SUCCESS, rta)
-                print(messages)
-                return HttpResponseRedirect(reverse('oficinaCreate'))
-            else:
-                messages.add_message(request, messages.ERROR, rta)
-                print(messages)
-                messages.error(request, "Error")
-                return HttpResponseRedirect(reverse('oficinaCreate'))
-        else:
-            print(form.errors)
-    else:
-        form = OficinaForm()
-
-    context = {
-        'form': form,
-    }
-
-    return render(request, 'Usuario/oficinaCreate.html', context)
+        user=None
+        dic = request.POST.dict()
+        print(dic)
+        ubicacion = str(dic['calle'])+","+str(dic['carrera'])+","+str(dic['numero'])
+        create_oficina(dic['foto'],"https://panoraven.com/es/embed/7H05TCQdC8",dic['nombre'],float(dic['precio']),dic['tipo_contrato'],ubicacion,dic['localidad'],dic['descripcion'],0,user,int(dic.get('parqueadero',0)),int(dic.get('transporte',0)),int(dic.get('wifi',0)),int(dic.get('aire',0)),int(dic.get('calefaccion',0)),int(dic.get('locker',0)),int(dic.get('vista',0)),int(dic.get('fotocopiadora',0)),int(dic.get('impresora',0)),int(dic.get('monitordual',0)),int(dic.get('monitorunico',0)),int(dic.get('proyector',0)),int(dic.get('scanner',0)),int(dic.get('cafe',0)),int(dic.get('agua',0)),int(dic.get('chillout',0)),int(dic.get('dog',0)),int(dic.get('eventos',0)))
+    lista = {"Transporte":[["Parqueadero incluido","parqueadero"],["Ubicación cerca del transporte público","transporte"]],"Características":[["Wifi de alta velocidad","wifi"],["Aire acondicionado","aire"],["Calefacción","calefaccion"],["Lockers personales","locker"],["Vista al exterior","vista"]],"Equipamiento":[["Fotocopiadora","fotocopiadora"],["Impresora","impresora"],["Monitor dual","monitordual"], ["Monitor único","monitorunico"],["Proyector","proyector"],["Scanner","scanner"]],"Facilidades":[["Café  gratis","cafe"],["Agua para beber gratis","agua"],["Área de Chill-out","chillout"],["Zona Dog-friendly","dog"],["Eventos","eventos"]]}
+    context = {'lista':lista,}
+    return render(request, 'oficina/create.html', context)
 
 
