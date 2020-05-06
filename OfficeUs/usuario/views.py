@@ -22,7 +22,7 @@ def usuario_create(request):
             if rta=='Usuario creado':
                 messages.add_message(request, messages.SUCCESS, rta)
                 print(messages)
-                return HttpResponseRedirect('/oficinas/get/0?m=2')
+                return HttpResponseRedirect('/oficinas/get%0?m=2')
                 return render(request, 'iniciar_sesion.html')
             else:
                 messages.add_message(request, messages.ERROR, rta)
