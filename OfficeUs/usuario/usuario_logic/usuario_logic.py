@@ -1,7 +1,9 @@
 from django.db import models
 from ..models import Usuario
 
-#Get todos los usuarios
+def get_usuario(ide):
+	return Usuario.objects.get(id=ide)
+
 def iniciar_sesion(correo, password):
 	return Usuario.objects.get(contraseña=password,correo=correo)
 

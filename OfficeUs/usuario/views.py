@@ -1,10 +1,19 @@
 from django.shortcuts import render
 from .forms import UsuarioForm
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse
-from .usuario_logic.usuario_logic import get_usuarios, create_user
+from django.template import loader
+from .usuario_logic.usuario_logic import *
 from django.contrib.auth.decorators import login_required
+
+#@login_required
+def usuario_profile(request,id,opcion):
+    template=loader.get_template('Usuario/profile.html')
+    us=get_usuario(id)
+    context={'user':us,'correo' : id,'opcion':opcion}
+    return HttpResponse(template.render(context,request))
+
 
 #@login_required
 def usuario_list(request):

@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<style>
+		a:focus{
+			text-decoration: none;
+			outline: 0;
+		}
+		.foto{
+			border-radius: 7px;
+			width:220px;height:220px;
+			background-color: white;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top:20px;
+			margin-bottom:20px
+		}
+		i{
+			margin-bottom:8px;
+		}
+		#uno{
+			background: -webkit-linear-gradient( #5dd2b5,#5dbcd2);	
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		#dos{
+			background: -webkit-linear-gradient(#3aa4bd, #5dd2b5);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		#tres{
+			background: -webkit-linear-gradient( #3aa4bd,#9064d1);	
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		#cuatro{
+			background: -webkit-linear-gradient( #9064d1,#d164c6);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+	</style>
+</head>
+<body>
+	{% block header %}
+	{% include 'header_despues.html' %}
+	{% endblock header %}
+		<div class="row">
+			<div class="col-md-3" >
+				<div class="row">
+					<img class="foto" src={{user.foto}}>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="list-group list-group-flush">
+							<a href="/usuario/profile/{{correo}}/oficinas_publicadas">
+								<li class="list-group-item d-flex justify-content-between align-items-center">
+									<h5 style="font-family:'Quicksand';background: -webkit-linear-gradient(#5dd2b5,#5dbcd2);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"><b>Oficinas publicadas</b></h5>
+									<i id="uno" class="fas fa-upload"></i>
+								</li>	
+							</a>
+							<a href="/usuario/profile/{{correo}}/estadisticias_generales">
+								<li class="list-group-item d-flex justify-content-between align-items-center">
+									<h5 style="font-family:'Quicksand';background: -webkit-linear-gradient(#3aa4bd, #5dd2b5);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">
+										<b>Estadísticas generales</b>
+									</h5>
+									<i id="dos" class="fas fa-chart-area"></i>
+								</li>	</a>
+								<a href="/usuario/profile/{{correo}}/estadisticas_oficina">
+									<li class="list-group-item d-flex justify-content-between align-items-center">
+										<h5 style="font-family:'Quicksand';background: -webkit-linear-gradient(#3aa4bd,#9064d1);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"><b>Estadísticas por oficina</b></h5>
+										<i id="tres" class="fas fa-chart-pie"></i>
+									</li></a>
+									<a href="/usuario/profile/{{correo}}/disponibilidad">
+										<li class="list-group-item d-flex justify-content-between align-items-center">
+											<h5 style="font-family:'Quicksand';background: -webkit-linear-gradient(#9064d1,#d164c6);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"><b>Disponibilidad de oficinas</b></h5>
+											<i id="cuatro" class="fas fa-calendar-alt"></i>
+										</li>
+									</a>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+					<div class="col-md-9" >
+						{% block layout%}
+						{% if opcion == 'oficinas_publicadas' %}
+						{% include './oficinas_publicadas.html' %}
+						{% elif opcion == 'estadisticias_generales' %}
+						{% include './estadisticas_generales.html' %}
+						{% elif opcion == 'estadisticas_oficina' %}
+						{% include './estadisticas_oficina.html' %}
+						{% elif opcion == 'disponibilidad' %}
+						{% include './disponibilidad.html' %}
+						{% endif %}
+						{% endblock layout%}
+					</div>
+				</div>
+		</body>
+		</html>
