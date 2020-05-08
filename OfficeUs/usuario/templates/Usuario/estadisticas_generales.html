@@ -1,5 +1,10 @@
 <html>
 <head>
+	{% load static %}
+    <script type="text/javascript" src="{% static 'fusioncharts/fusioncharts.js' %}"></script>
+    <script type="text/javascript" src="{% static 'fusioncharts/fusioncharts.charts.js' %}"></script>
+    <script type="text/javascript" src="{% static 'fusioncharts/themes/fusioncharts.theme.fusion.js' %}"></script>
+    
 	<style>
 		.espacio{
 			height:110px;
@@ -14,6 +19,10 @@
 			margin:10px 0px 10px 0px;
 			background-color:white;
 		}
+
+		.carrd2{
+			height:320px;
+		}
 	</style>
 </head>
 <body>
@@ -21,24 +30,24 @@
 		<div class="row">
 			<div class="carrd" style="margin-left: 17px">
 				<div style="padding:20px">
-					<h2 style="margin-left:30px; font-family: Quicksand;">Cifras puntuales</h2>
+					<h2 style="margin-left:30px; font-family: Quicksand;">Cifras del último mes</h2>
 					<div style="margin-top:15px;width:90%;display: flex;flex-wrap: wrap;margin-left: auto;margin-left: auto">
 						<div class="espacio" style="background-image: linear-gradient(-90deg, #5dbcd2, #5dd2b5)">
 							<div style="margin-top:10%;margin-bottom: 20%">
 								<h5 style="text-align: center;">Tasa de desocupación</h5>
-								<h5 style="text-align: center;">76%</h5>
+								<h5 style="text-align: center;">21%</h5>
 							</div>
 						</div>
 						<div class="espacio" style="background-image: linear-gradient(-90deg, #646fd1, #3aa4bd)">
 							<div style="margin-top:10%;margin-bottom: 20%">
 								<h5 style="text-align: center;">Nuevos arrendatarios</h5>
-								<h5 style="text-align: center;">150</h5>
+								<h5 style="text-align: center;">57</h5>
 							</div>
 						</div>
 						<div class="espacio" style="background-image: linear-gradient(-90deg, #d164c6, #9064d1)">
 							<div style="margin-top:10%;margin-bottom: 20%">
-								<h5 style="text-align: center;">Tasa de desocupación</h5>
-								<h5 style="text-align: center;">76%</h5>
+								<h5 style="text-align: center;">Calificación empresa</h5>
+								<h5 style="text-align: center;">4.2</h5>
 							</div>
 						</div>
 					</div>
@@ -47,38 +56,30 @@
 		</div>
 		<div class="row">
 			<div class="col-md-7" >
-				<div class="carrd" style="margin-left: 2px">
-					<div style="padding:15px">
-						<h4 style="margin-left:20px; font-family: Quicksand;">Calificación promedio</h4>
-					</div>
+				<div class="carrd carrd2" style="margin-left: 2px">
+						<div id="interesados">{{ output|safe }}</div>
 				</div>
 			</div>
 			<div class="col-md-5" >
-				<div class="carrd" style="width:100%">
-					<div class="carrd" style="margin-left: 2px">
-						<div style="padding:15px">
-							<h4 style="margin-left:20px; font-family: Quicksand;">Otro dato</h4>
-						</div>
+				<div class="carrd carrd2" style="width:100%">
+					<div class="carrd carrd2" style="margin-left: 2px">
+						<div id="mercado:)">{{ mercado|safe }}</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-5" >
-				<div class="carrd" style="width:100%">
-					<div class="carrd" style="margin-left: 2px">
-						<div style="padding:15px">
-							<h4 style="margin-left:20px; font-family: Quicksand;">Otro dato</h4>
-						</div>
+				<div class="carrd carrd2" style="width:100%">
+					<div class="carrd carrd2" style="margin-left: 2px">
+							<div id="desocupacion">{{ historial|safe }}</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-7" >
 				<div class="carrd" style="width:100%">
-					<div class="carrd" style="margin-left: 2px">
-						<div style="padding:15px">
-							<h4 style="margin-left:20px; font-family: Quicksand;">Otro dato</h4>
-						</div>
+					<div class="carrd carrd2" style="margin-left: 2px">
+							<div id="calificacionProm">{{ calificacion|safe }}</div>
 					</div>
 				</div>
 			</div>
