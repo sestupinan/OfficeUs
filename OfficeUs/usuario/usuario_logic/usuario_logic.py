@@ -1,5 +1,6 @@
 from django.db import models
 from ..models import Usuario
+from oficina.models import Oficina
 
 def get_usuario(ide):
 	return Usuario.objects.get(id=ide)
@@ -15,3 +16,6 @@ def create_user(form):
     user = form.save()
     user.save()
     return ('Usuario creado')
+
+def dar_oficinas(id_user):
+	return Oficina.objects.filter(duenio=id_user)

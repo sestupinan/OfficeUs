@@ -1,5 +1,123 @@
 <html>
+<head>
+	{% load static %}
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<script type="text/javascript">
+		function metodo(calificacion,id) {
+			var y = Math.floor(calificacion)+1
+			for(var i=1; i<y;i++){
+				document.getElementById('calificacion'+i.toString(10)+id.toString(10)).className="py-2 px-1 rate-popover fas fa-star amber-text";
+			}
+			if(Number.isInteger(calificacion)==false){
+				var nueva = document.createElement("i");
+				nueva.className= "py-2 px-1 rate-popover fas fa-star-half amber-text";
+				nueva.style= "position:relative;margin-left:-22px";
+				document.getElementById('calificacion'+( Math.floor(calificacion)+1).toString(10)+id.toString(10)).appendChild(nueva)
+			}
+
+		}
+	</script>
+	<style>
+		b, td, h4{
+			font-family:'Quicksand';
+		}
+		.uva_pasa{
+			margin-top:15px;
+			display: flex;
+			flex-wrap: wrap;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.pera{
+			background-color: white;
+			height:310px;
+			width: 460px;
+			margin:9px;
+
+		}
+		.pera_inside{
+			padding:10px;
+		}
+		.manzana{
+			width:170px;
+			height:170px;
+			margin-bottom:8px;
+		}
+		.pera_columna{
+			float: left;
+			width: 50%;
+			height: 300px;
+			padding: 10px;
+		}
+		.no_mango{
+			max-width: 250px;
+			padding: 1rem;
+			position: relative;
+			margin-top:23px;
+			background: linear-gradient(270deg,#3aa4bd,#9064d1);
+			padding: 3px;
+			border-radius: 5px;
+		}
+		.sandia{
+			background: #ffffff;
+			color: #3aa4bd;
+			padding: 7px;
+			border-radius: 5px;
+			text-align: center;
+		}
+	</style>
+</head>
 <body>
-<h1>Oficinas publicadas</h1>
+	<div class="col-md-12" style="background-color: #ebebeb">
+		<div class="uva_pasa">
+			{% for oficina in oficinas %}
+			<div class="pera">
+				<div class="pera_inside">
+					<div class="pera_columna">
+						<img src={{oficina.foto}} class="manzana">
+						<h4><b>{{oficina.nombre}}</b></h4>
+						<a href="#" class="banana"><div class="no_mango"><div class="sandia"><b>Editar</b></div></div></a>
+					</div>
+					<div class="pera_columna">
+						<table>
+							<tbody>
+								<tr>
+									<td><h5>Interesados</h5></td>
+									<td style="width:20px"></td>
+									<td><h5>34</h5></td>
+								</tr>
+								<tr>
+									<td><h5>Visitantes</h5></td>
+									<td style="width:20px"></td>
+									<td><h5>17</h5></td>
+								</tr>
+								<tr>
+									<td><h5>Calificación</h5></td>
+									<td style="width:20px"></td>
+									<td><h5>{{oficina.calificacion}}</h5></td>
+								</tr>										
+							</table>
+							<div>
+								<i id="calificacion1{{oficina.id}}" class="py-2 px-1 rate-popover fas fa-star" data-index="0" data-html="true" data-toggle="popover" data-placement="top" title="" data-original-title="Very bad"></i>
+								<i id="calificacion2{{oficina.id}}" class="py-2 px-1 rate-popover fas fa-star" data-index="1" data-html="true" data-toggle="popover" data-placement="top" title="" data-original-title="Poor"></i>
+								<i id="calificacion3{{oficina.id}}" class="py-2 px-1 rate-popover fas fa-star" data-index="2" data-html="true" data-toggle="popover" data-placement="top" title="" data-original-title="OK"></i>
+								<i id="calificacion4{{oficina.id}}" class="py-2 px-1 rate-popover fas fa-star" data-index="3" data-html="true" data-toggle="popover" data-placement="top" title="" data-original-title="Good"></i>
+								<i id="calificacion5{{oficina.id}}" class="py-2 px-1 rate-popover fas fa-star" data-index="4" data-html="true" data-toggle="popover" data-placement="top" title="" data-original-title="Excellent" aria-describedby="tooltip116975"></i>
+								<script>metodo({{oficina.calificacion}},{{oficina.id}});</script>
+							</tbody>
+						</div>
+						<br><br><br>
+						<a href="./oficinas_publicadas={{oficina.id}}" class="mango btn-primary"><b>Ver comportamiento</b></a>
+					</div>
+				</div>
+			</div>
+			{%endfor%}
+		</div>
+	</div>
 </body>
+
 </html>

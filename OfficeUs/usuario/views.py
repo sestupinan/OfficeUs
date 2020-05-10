@@ -4,11 +4,12 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse
 from django.template import loader
+from oficina.oficina_logic import oficina_logic as ol
 from .usuario_logic.usuario_logic import *
 from django.contrib.auth.decorators import login_required
 from .fusioncharts import *
 
-def armarEstadisticasInteresados():
+def armarEstadisticasInteresados(id,idhtml):
     dataSource = {
     "chart": {
     "theme": "fusion",
@@ -38,7 +39,7 @@ def armarEstadisticasInteresados():
     ]
     }
     ]}
-    line = FusionCharts("msline", "myFirstChart", "100%", "90%", "interesados", "json", dataSource)
+    line = FusionCharts("msline", id, "100%", "90%", idhtml, "json", dataSource)
     return line
 
 def armarHistorialDesocupacion():
@@ -109,7 +110,7 @@ def armarPorcentajeMercado():
     return line
 
 
-def armarEstadisticasCalificacion():
+def armarEstadisticasCalificacion(id,idhtml):
     dataSource={
     "chart": {"caption":"Calificación de las oficinas en el tiempo","xAxisName": "Semana","yAxisName": "calificación promedio",
         "theme": "fusion","yaxisminValue": "0","yaxismaxValue": "5",
@@ -147,21 +148,29 @@ def armarEstadisticasCalificacion():
             "label": "May 4",
             "value": "4"
         }
-    ]
-}
-    column2D = FusionCharts("column2d", "mySecondChart", "100%", "90%", "calificacionProm", "json", dataSource)
+    ]}
+    column2D = FusionCharts("column2d", id, "100%", "90%", idhtml, "json", dataSource)
     return column2D
 
 def usuario_profile(request,id,opcion):
-    line = armarEstadisticasInteresados()
-    d2 = armarEstadisticasCalificacion()
     pie = armarPorcentajeMercado()
     line2 = armarHistorialDesocupacion()
+    d2 = armarEstadisticasCalificacion("mySecondChart","calificacionProm")
     template=loader.get_template('Usuario/profile.html')
     us=get_usuario(id)
-    context={'user':us,'correo' : id,'opcion':opcion,'output': line.render(), 'calificacion':d2.render(),'mercado':pie.render(),"historial":line2.render() }
+    oficinas = dar_oficinas(id)
+    try:
+        id_oficina=opcion[opcion.index('=')+1:len(opcion)]
+        idd=ol.get_oficina(int(id_oficina))
+        print("ID OFICINA LA QUE", idd)
+        opcion='estadisticas_oficina'
+        line = armarEstadisticasInteresados("myChart","ingresos")
+    except:
+        line = armarEstadisticasInteresados("myFirstChart","interesados")
+        idd=None
+    print("ID OFICINA", idd)
+    context={'oficina':idd,'user':us,'correo' : id,'opcion':opcion,'output': line.render(), 'calificacion':d2.render(),'mercado':pie.render(),"historial":line2.render(),'oficinas':oficinas }
     return HttpResponse(template.render(context,request))
-
 
 #@login_required
 def usuario_list(request):

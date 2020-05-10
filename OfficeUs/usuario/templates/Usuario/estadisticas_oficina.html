@@ -1,5 +1,234 @@
 <html>
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <script type="text/javascript" src="{% static 'fusioncharts/fusioncharts.js' %}"></script>
+  <script type="text/javascript" src="{% static 'fusioncharts/fusioncharts.charts.js' %}"></script>
+  <script type="text/javascript" src="{% static 'fusioncharts/themes/fusioncharts.theme.fusion.js' %}">
+  </script>
+  <style>
+    .fresa{
+      height:200px;
+      width: 200px;
+    }
+    .tamarindo{
+      margin: 30px 15px 15px 15px;
+    }
+    .mora{
+      width:95%;
+    }
+    h2,h5,h3{
+      font-family:'Quicksand';
+    }
+    .naranja{
+      color:#9064d1;
+      font-weight: 400;
+    }
+    .aguacate{
+      color:lightgray;
+    }
+    #arriendos{
+      margin: 20px 20px 20px 0;
+    }
+    #arrendatarios{
+      margin: 20px 20px 20px 0;
+    }
+    #agregar{
+      margin: 20px 20px 20px 0;
+    }
+  </style>
+</head>
 <body>
-	<h1>Estadísticas oficina</h1>
+	<div class="container-fluid tamarindo">
+   <div class="row">
+    <div class="col-md-12" >
+     <div class="row">
+      <div class="col-md-3">
+        <img src={{oficina.foto}} class="fresa">
+      </div>
+      <div class="col-md-3">
+        <h3>{{oficina.nombre}}</h3>
+        <h4>Calle 75 #49-10</h4>
+        <h4>{{oficina.localidad}}</h4>
+        <h4>{{oficina.tipo_contrato}}</h4>
+      </div>
+      <div class="col-md-3">
+        <h2 class="naranja">$5.870.000</h2>
+        <p class="aguacate">Ingresos generados<br>en el último mes</p>
+        <p class="aguacate"><span style="color:font-weight:600;color:gray">45%</span> de los ingresos totales</p>
+      </div>
+      <div class="col-md-3">
+        <div id="ingresos">{{ output|safe }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12" >
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <a><div class="mango btn-primary" id="arriendos" onClick="papaya(1)" style="opacity:50%">Historial de arriendos</div></a>
+          <a><div class="mango btn-primary" id="arrendatarios"  onClick="papaya(0)">Ver arrendatarios</div></a>
+          <a><div class="mango btn-primary" id="agregar" >Agregar al historial <i class="fas fa-plus"></i></div></a>
+        </div>
+        <div class="row">
+         <table class="table mora" id="tabla_arriendos">
+          <thead>
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>May 4</td>
+              <td>$60.000</td>
+              <td>por horas</td>
+            </tr>
+            <tr>
+              <td>May 1</td>
+              <td>$75.000</td>
+              <td>por horas</td>
+            </tr>
+            <tr>
+              <td>Abr 29</td>
+              <td>$47.000</td>
+              <td>por horas</td>
+            </tr>
+            <tr>
+              <td>Abr 29</td>
+              <td>$270.000</td>
+              <td>por horas</td>
+            </tr>
+            <tr>
+              <td>Abr 29</td>
+              <td>$47.000</td>
+              <td>por horas</td>
+            </tr>
+            <tr>
+              <td>Abr 28</td>
+              <td>$350.000</td>
+              <td>por horas</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table mora" id="tabla_arrendatarios" style="visibility: hidden;display: none">
+          <thead>
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Arrendatario</th>
+              <th scope="col">Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>May 4</td>
+              <td>María José Viñas</td>
+              <td><b>Frecuente</b></td>
+            </tr>
+            <tr>
+              <td>May 1</td>
+              <td>Maya García</td>
+              <td>Normal</td>
+            </tr>
+            <tr>
+              <td>Abr 29</td>
+              <td>María José Viñas</td>
+              <td><b>Frecuente</b></td>
+            </tr>
+            <tr>
+              <td>Abr 29</td>
+              <td>Ana López Machado</td>
+              <td>Normal</td>
+            </tr>
+            <tr>
+              <td>Abr 29</td>
+              <td>María José Viñas</td>
+              <td><b>Frecuente</b></td>
+            </tr>
+            <tr>
+              <td>Abr 28</td>
+              <td>Luis Torres Granada</td>
+              <td>Normal</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h4>Ingresos</h4>
+        </li>
+        <li class="list-group-item">
+          <p class="aguacate">Último mes</p>
+          <h5 class="naranja">$5.870.000</h5 class="naranja">
+        </li>
+        <li class="list-group-item">
+          <p class="aguacate">Mes pasado</p>
+          <h5 class="naranja">$12.070.000</h5 class="naranja">
+        </li>
+        <li class="list-group-item">
+          <p class="aguacate">Hace 2 meses</p>
+          <h5 class="naranja">$11.349.000</h5 class="naranja">
+        </li>
+        <li class="list-group-item">
+          <p class="aguacate">Hace 3 meses</p>
+          <h5 class="naranja">$12.570.000</h5 class="naranja">
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-2">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h4>Calificación</h4>
+        </li>
+        <li class="list-group-item">
+          <p class="aguacate">Último mes</p>
+          <h5 class="naranja">{{oficina.calificacion}}</h5 class="naranja">
+        </li>
+        <li class="list-group-item">
+          <p class="aguacate">Mes pasado</p>
+          <h5 class="naranja">4.2</h5 class="naranja">
+        </li>
+        <li class="list-group-item">
+          <p class="aguacate">Hace 2 meses</p>
+          <h5 class="naranja">4.35</h5 class="naranja">
+        </li>
+        <li class="list-group-item">
+          <p class="aguacate">Hace 3 meses</p>
+          <h5 class="naranja">4.23</h5 class="naranja">
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div> 
+</div>
 </body>
+<script type="text/javascript">
+  function papaya(opcion){
+    if(opcion==1){
+      document.getElementById("arriendos").style.opacity="50%";
+      document.getElementById("arrendatarios").style.opacity="100%";
+      document.getElementById("tabla_arriendos").style.visibility="visible";
+      document.getElementById("tabla_arriendos").style.display="";
+      document.getElementById("tabla_arrendatarios").style.visibility="hidden";
+      document.getElementById("tabla_arrendatarios").style.display="none";
+    }
+    else{
+      document.getElementById("arrendatarios").style.opacity="50%";
+      document.getElementById("arriendos").style.opacity="100%";
+      document.getElementById("tabla_arriendos").style.visibility="hidden";
+      document.getElementById("tabla_arriendos").style.display="none";
+      document.getElementById("tabla_arrendatarios").style.visibility="visible";
+      document.getElementById("tabla_arrendatarios").style.display="";
+    }
+  }
+</script>
 </html>

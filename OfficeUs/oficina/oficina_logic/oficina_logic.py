@@ -40,7 +40,7 @@ def create_oficina(foto,foto360,nombre,precio,contrato,ubicacion,localidad,desc,
     return ('Oficina creada')
 
 def get_oficina(ide):
-	return Oficina.objects.get(id=ide)
+    return Oficina.objects.get(id=ide)
 
 def get_oficinas_dado_una_palabra_clave(palabra,pagina):
 	q='select * from '+Oficina.objects.model._meta.db_table+' as p where p.nombre = %s limit %s offset %s'

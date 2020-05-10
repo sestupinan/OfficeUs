@@ -12,6 +12,11 @@
 			text-decoration: none;
 			outline: 0;
 		}
+		.mango{
+			padding:13px;
+			border-radius:7px;
+			background: -webkit-linear-gradient(360deg,#3aa4bd,#9064d1);
+		}
 		.foto{
 			border-radius: 7px;
 			width:220px;height:220px;
@@ -64,21 +69,15 @@
 						<ul class="list-group list-group-flush">
 							<a href="/usuario/profile/{{correo}}/oficinas_publicadas">
 								<li class="list-group-item d-flex justify-content-between align-items-center">
-									<h5 style="font-family:'Quicksand';background: -webkit-linear-gradient(#5dd2b5,#5dbcd2);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"><b>Oficinas publicadas</b></h5>
-									<i id="uno" class="fas fa-upload"></i>
-								</li>	
-							</a>
-							<a href="/usuario/profile/{{correo}}/estadisticias_generales">
-								<li class="list-group-item d-flex justify-content-between align-items-center">
 									<h5 style="font-family:'Quicksand';background: -webkit-linear-gradient(#3aa4bd, #5dd2b5);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">
-										<b>Estadísticas generales</b>
+										<b>Oficinas publicadas</b>
 									</h5>
-									<i id="dos" class="fas fa-chart-area"></i>
+									<i id="dos" class="fas fa-upload"></i>
 								</li>	</a>
-								<a href="/usuario/profile/{{correo}}/estadisticas_oficina">
+								<a href="/usuario/profile/{{correo}}/estadisticias_generales">
 									<li class="list-group-item d-flex justify-content-between align-items-center">
-										<h5 style="font-family:'Quicksand';background: -webkit-linear-gradient(#3aa4bd,#9064d1);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"><b>Estadísticas por oficina</b></h5>
-										<i id="tres" class="fas fa-chart-pie"></i>
+										<h5 style="font-family:'Quicksand';background: -webkit-linear-gradient(#3aa4bd,#9064d1);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"><b>Estadísticas generales</b></h5>
+										<i id="tres" class="fas fa-chart-area"></i>
 									</li></a>
 									<a href="/usuario/profile/{{correo}}/disponibilidad">
 										<li class="list-group-item d-flex justify-content-between align-items-center">
