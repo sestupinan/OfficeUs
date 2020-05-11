@@ -13,7 +13,7 @@ def calcular_promedio(lista,atributo):
 			if atributo == "cantidad":
 				return suma
 			else:
-				return suma/len(lista)
+				return round(suma/len(lista),2)
 		else:
 			return 0
 	else:
