@@ -19,8 +19,8 @@ def calcular_promedio(lista,atributo):
 	else:
 		return 0
 
-def estadisticas_mes(mes, atributo):
-	return calcular_promedio(Historial.objects.filter(fecha_hora__icontains=mes),atributo)
+def estadisticas_mes(mes, atributo,id_oficina):
+	return calcular_promedio(Historial.objects.filter(fecha_hora__icontains=mes,oficina=int(id_oficina)),atributo)
 
 def get_historial_dado_oficina(id):
 	return Historial.objects.filter(oficina=id)

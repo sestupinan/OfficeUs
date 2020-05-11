@@ -1,0 +1,42 @@
+{
+    "chart": {
+        "theme": "fusion",
+        "caption": "Tasa de desocupación en el tiempo",
+        "subCaption": "últimos 4 meses",
+        "xAxisName": "mes",
+        "yAxisName": "Tasa de desocupación",
+        "lineThickness": "2",
+        "yaxisminValue": "0","yaxismaxValue": "100"
+    },
+    "data": [
+        {
+            "label": "Enero",
+            "value": "15"
+        },
+        {
+            "label": "Febrero",
+            "value": "25"
+        },
+        {
+            "label": "Marzo",
+            "value": "34"
+        },
+        {
+            "label": "Abril",
+            "value": "23"
+        }
+    ],
+    "trendlines": [
+        {
+            "line": [
+                {
+                    "startvalue": "18",
+                    "color": "#29C3BE",
+                    "displayvalue": "Tasa promedio",
+                    "valueOnRight": "1",
+                    "thickness": "2"
+                }
+            ]
+        }
+    ]}
+    

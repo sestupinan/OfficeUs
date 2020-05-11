@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from .forms import UsuarioForm
+import json
+import io
+from OfficeUs.settings import STATICFILES_DIRS
 from django.contrib import messages
 from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse
@@ -9,146 +12,44 @@ from .usuario_logic.usuario_logic import *
 from django.contrib.auth.decorators import login_required
 from .fusioncharts import *
 
+def armarGraficaOficina(id_grafico, id_en_html, id_oficina):
+    d = str(STATICFILES_DIRS)[1:len(str(STATICFILES_DIRS))-1].replace("'","").replace("\\\\","/")
+    d =d[0:len(d)-7]+'/OfficeUs'+d[len(d)-7:len(d)]
+    with open(d+'/jsons/oficinas/'+ str(id_oficina)+'.json',"r",encoding="utf-8") as json_file: 
+        dataSource = dict(json.load(json_file))
+    line = FusionCharts("msline", id_grafico, "100%", "90%", id_en_html, "json", dataSource)
+    return line
+
 def armarEstadisticasInteresados(id,idhtml):
-    dataSource = {
-    "chart": {
-    "theme": "fusion",
-    "yAxisName": "Cantidad",
-    "xAxisName": "Mes",
-    "yaxisminValue": "0","yaxismaxValue": "500",
-    "caption":"Número de interesados vs Número de personas{br}que ven las oficinas de la empresa"
-    },
-    "categories": [{"category": [
-    {"label": "Ene"},
-    {"label": "Feb"},
-    {"label": "Mar"},
-    {"label": "Abr"},
-    ]}],
-    "dataset": [{"seriesname": "Interesados","data": [
-    {"value": "105"},
-    {"value": "123"},
-    {"value": "100"},
-    {"value": "450"}
-    ]},
-    {
-    "seriesname": "Visitantes","data": [
-    {"value": "245"},
-    {"value": "232"},
-    {"value": "221"},
-    {"value": "207"}
-    ]
-    }
-    ]}
+    d = str(STATICFILES_DIRS)[1:len(str(STATICFILES_DIRS))-1].replace("'","").replace("\\\\","/")
+    d =d[0:len(d)-7]+'/OfficeUs'+d[len(d)-7:len(d)]
+    with open(d+'/jsons/interesados/876.json',"r",encoding="utf-8") as json_file: 
+        dataSource = dict(json.load(json_file))
     line = FusionCharts("msline", id, "100%", "90%", idhtml, "json", dataSource)
     return line
 
 def armarHistorialDesocupacion():
-    dataSource={
-    "chart": {
-        "theme": "fusion",
-        "caption": "Tasa de desocupación en el tiempo",
-        "subCaption": "últimos 4 meses",
-        "xAxisName": "mes",
-        "yAxisName": "Tasa de desocupación",
-        "lineThickness": "2",
-        "yaxisminValue": "0","yaxismaxValue": "100"
-    },
-    "data": [
-        {
-            "label": "Enero",
-            "value": "15"
-        },
-        {
-            "label": "Febrero",
-            "value": "25"
-        },
-        {
-            "label": "Marzo",
-            "value": "34"
-        },
-        {
-            "label": "Abril",
-            "value": "23"
-        }
-    ],
-    "trendlines": [
-        {
-            "line": [
-                {
-                    "startvalue": "18",
-                    "color": "#29C3BE",
-                    "displayvalue": "Tasa promedio",
-                    "valueOnRight": "1",
-                    "thickness": "2"
-                }
-            ]
-        }
-    ]}
+    d = str(STATICFILES_DIRS)[1:len(str(STATICFILES_DIRS))-1].replace("'","").replace("\\\\","/")
+    d =d[0:len(d)-7]+'/OfficeUs'+d[len(d)-7:len(d)]
+    with open(d+'/jsons/desocupacion/876.json',"r",encoding="utf-8") as json_file: 
+        dataSource = dict(json.load(json_file))
     line = FusionCharts("line", "myFourthChart", "100%", "90%", "desocupacion", "json", dataSource)
     return line
 
 def armarPorcentajeMercado():
-    dataSource={
-    "chart": {
-        "subCaption": "último mes",
-        "caption": "Porcentaje de mercado de la empresa",
-        "showPercentInTooltip": "0",
-        "decimals": "1",
-        "useDataPlotColorForLabels": "1",
-        "theme": "fusion"
-    },
-    "data": [{
-            "label": "Espacio{br}coworking",
-            "value": "13"
-        },
-        {
-            "label": "Otras",
-            "value": "87"
-        }
-    ]}
+    d = str(STATICFILES_DIRS)[1:len(str(STATICFILES_DIRS))-1].replace("'","").replace("\\\\","/")
+    d =d[0:len(d)-7]+'/OfficeUs'+d[len(d)-7:len(d)]
+    with open(d+'/jsons/mercado/876.json',"r",encoding="utf-8") as json_file: 
+        dataSource = dict(json.load(json_file))
     line = FusionCharts("pie2d", "myThirdChart", "100%", "90%", "mercado:)", "json", dataSource)
     return line
 
 
 def armarEstadisticasCalificacion(id,idhtml):
-    dataSource={
-    "chart": {"caption":"Calificación de las oficinas en el tiempo","xAxisName": "Semana","yAxisName": "calificación promedio",
-        "theme": "fusion","yaxisminValue": "0","yaxismaxValue": "5",
-    },
-    "data": [
-        {
-            "label": "Mar 16",
-            "value": "4"
-        },
-        {
-            "label": "Mar 23",
-            "value": "3"
-        },
-        {
-            "label": "Mar 30",
-            "value": "4"
-        },
-        {
-            "label": "Abr 6",
-            "value": "4"
-        },
-        {
-            "label": "Abr 13",
-            "value": "3"
-        },
-        {
-            "label": "Abr 20",
-            "value": "4"
-        },
-        {
-            "label": "Abr 27",
-            "value": "5"
-        },
-        {
-            "label": "May 4",
-            "value": "4"
-        }
-    ]}
+    d = str(STATICFILES_DIRS)[1:len(str(STATICFILES_DIRS))-1].replace("'","").replace("\\\\","/")
+    d =d[0:len(d)-7]+'/OfficeUs'+d[len(d)-7:len(d)]
+    with open(d+'/jsons/calificacion/876.json',"r",encoding="utf-8") as json_file: 
+        dataSource = dict(json.load(json_file))
     column2D = FusionCharts("column2d", id, "100%", "90%", idhtml, "json", dataSource)
     return column2D
 
@@ -164,9 +65,9 @@ def usuario_profile(request,id,opcion):
         idd=ol.get_oficina(int(id_oficina))
         opcion='estadisticas_oficina'
         historial = get_historial_dado_oficina(int(id_oficina))
-        line = armarEstadisticasInteresados("myChart","ingresos")
-        meses_cal = [estadisticas_mes("Ene", "calificacion"),estadisticas_mes("Feb", "calificacion"),estadisticas_mes("Mar", "calificacion"),estadisticas_mes("Abr", "calificacion")]
-        meses_ingresos = [estadisticas_mes("Ene", "cantidad"),estadisticas_mes("Feb", "cantidad"),estadisticas_mes("Mar", "cantidad"),estadisticas_mes("Abr", "cantidad")]
+        line = armarGraficaOficina("myChart", "ingresos", id_oficina)
+        meses_cal = [estadisticas_mes("Ene", "calificacion",id_oficina),estadisticas_mes("Feb", "calificacion",id_oficina),estadisticas_mes("Mar", "calificacion",id_oficina),estadisticas_mes("Abr", "calificacion",id_oficina)]
+        meses_ingresos = [estadisticas_mes("Ene", "cantidad",id_oficina),estadisticas_mes("Feb", "cantidad",id_oficina),estadisticas_mes("Mar", "cantidad",id_oficina),estadisticas_mes("Abr", "cantidad",id_oficina)]
     except:
         meses_cal= None
         meses_ingresos = None

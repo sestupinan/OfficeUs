@@ -1,0 +1,19 @@
+{
+    "chart": {
+        "subCaption": "último mes",
+        "caption": "Porcentaje de mercado de la empresa",
+        "showPercentInTooltip": "0",
+        "decimals": "1",
+        "useDataPlotColorForLabels": "1",
+        "theme": "fusion"
+    },
+    "data": [{
+            "label": "Espacio{br}coworking",
+            "value": "13"
+        },
+        {
+            "label": "Otras",
+            "value": "87"
+        }
+    ]
+}

@@ -1,0 +1,44 @@
+{
+    "chart": {
+        "caption":"Calificación de las oficinas en el tiempo",
+        "xAxisName": "Semana",
+        "yAxisName": "calificación promedio",
+        "theme": "fusion",
+        "yaxisminValue": "0",
+        "yaxismaxValue": "5"
+    },
+    "data": [
+        {
+            "label": "Mar 16",
+            "value": "3.4"
+        },
+        {
+            "label": "Mar 23",
+            "value": "3.7"
+        },
+        {
+            "label": "Mar 30",
+            "value": "4"
+        },
+        {
+            "label": "Abr 6",
+            "value": "4.2"
+        },
+        {
+            "label": "Abr 13",
+            "value": "3.8"
+        },
+        {
+            "label": "Abr 20",
+            "value": "4.1"
+        },
+        {
+            "label": "Abr 27",
+            "value": "3.7"
+        },
+        {
+            "label": "May 4",
+            "value": "3.3"
+        }
+    ]
+}

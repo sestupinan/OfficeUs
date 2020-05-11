@@ -1,0 +1,30 @@
+ {
+    "chart": {
+    "theme": "fusion",
+    "yAxisName": "Cantidad",
+    "xAxisName": "Mes",
+    "yaxisminValue": "0","yaxismaxValue": "500",
+    "caption":"Número de interesados vs Número de personas{br}que ven las oficinas de la empresa"
+    },
+    "categories": [{"category": [
+    {"label": "Ene"},
+    {"label": "Feb"},
+    {"label": "Mar"},
+    {"label": "Abr"}
+    ]}],
+    "dataset": [{"seriesname": "Interesados","data": [
+    {"value": "105"},
+    {"value": "123"},
+    {"value": "100"},
+    {"value": "450"}
+    ]},
+    {
+    "seriesname": "Visitantes","data": [
+    {"value": "245"},
+    {"value": "232"},
+    {"value": "221"},
+    {"value": "207"}
+    ]
+    }
+    ]
+}

@@ -1,0 +1,28 @@
+ {
+    "chart": {
+    "theme": "fusion",
+    "xAxisName": "Mes",
+    "yaxisminValue": "0","yaxismaxValue": "400"
+    },
+    "categories": [{"category": [
+    {"label": "Ene"},
+    {"label": "Feb"},
+    {"label": "Mar"},
+    {"label": "Abr"}
+    ]}],
+    "dataset": [{"seriesname": "Interesados","data": [
+    {"value": "25"},
+    {"value": "4"},
+    {"value": "5"},
+    {"value": "0"}
+    ]},
+    {
+    "seriesname": "Visitantes","data": [
+    {"value": "245"},
+    {"value": "232"},
+    {"value": "221"},
+    {"value": "377"}
+    ]
+    }
+    ]
+}
