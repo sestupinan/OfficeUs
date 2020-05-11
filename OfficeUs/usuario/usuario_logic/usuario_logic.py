@@ -42,3 +42,6 @@ def create_user(form):
 
 def dar_oficinas(id_user):
 	return Oficina.objects.filter(duenio=id_user)
+
+def get_recomendaciones(id_user):
+	return Oficina.objects.filter(duenio=id_user)[1:5]

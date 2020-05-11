@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.template import loader
 from django.http import HttpResponse
 from .oficina_logic.oficina_logic import *
+from usuario.usuario_logic import usuario_logic as moon
 from .forms import CommentForm
 from django.shortcuts import render, get_object_or_404
 # Create your views here.
@@ -19,8 +20,10 @@ def get(request,pagina):
 def get_oficina_dado_id(request,ide):
     template=loader.get_template('oficina/detail.html')
     oficina = get_oficina(ide)
-
-
+    if int(oficina.duenio.id)==877:
+        recomendaciones = moon.get_recomendaciones(oficina.duenio.id)
+    else:
+        recomendaciones = None
     comments = oficina.comments
     print(oficina.comments)
     new_comment = None
@@ -48,7 +51,7 @@ def get_oficina_dado_id(request,ide):
     lista13 = {"Fotocopiadora":oficina.fotocopiadora,"Impresora":oficina.impresora,"Monitor dual":oficina.monitordual, "Monitor único": oficina.monitorunico,"Proyector":oficina.proyector, "Scanner":oficina.scanner}
     lista14 = {"Café  gratis":oficina.cafe,"Agua para beber gratis":oficina.agua,"Área de Chill-out":oficina.chillout, "Zona Dog-friendly":oficina.dog, "Eventos":oficina.eventos}
     lista15 = {'post': oficina,'comments': comments,'new_comment': new_comment, 'comment_form': comment_form}
-    context= {'calle':direccion[0],'carrera':direccion[1],'numero':direccion[2],'lista1':lista11,'lista2':lista12,'lista3':lista13,'lista4': lista14,'lista5':lista15,'oficina':oficina, 'comment_form': comment_form}
+    context= {'recomendaciones':recomendaciones,'calle':direccion[0],'carrera':direccion[1],'numero':direccion[2],'lista1':lista11,'lista2':lista12,'lista3':lista13,'lista4': lista14,'lista5':lista15,'oficina':oficina, 'comment_form': comment_form}
     
 
     
