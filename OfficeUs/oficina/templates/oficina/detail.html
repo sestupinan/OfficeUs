@@ -72,10 +72,47 @@
                 <h5 style="font-family:'Quicksand';">Ubicación en mapa</h5>
                 <a style="color:black" onClick="desplegar_lista(0)"><h5 id="boton0">+</h5></a>
               </li>
+
               <div class="row">
                 <div class="col-md-12">
                   <iframe id="0" width="100%" height="450" frameborder="0" style="border:0;visibility: hidden; display:none" src="https://www.google.com/maps/embed/v1/place?q=Colombia%20Bogot%C3%A1%20Calle%20{{calle}}%20Carrera%20{{carrera}}%20%23{{numero}}-3&key=AIzaSyCs9n80GwxYIQB3Ph0hQqh-mo2uTm-OUuM"></iframe>
                 </div>
+              </div>
+              
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <h5 style="font-family:'Quicksand';">Comentarios</h5>
+                <a style="color:black" onClick="desplegar_lista(5)"><h5 id="boton5">+</h5></a>
+              </li>
+              <div id="5" style="visibility: hidden;display:none;">
+ 
+                {% for comment in oficina.comments.all %}
+                <div class="comments" style="padding: 10px;">
+                  <p class="font-weight-bold">
+                    {{ comment.name }}
+                    <span class=" text-muted font-weight-normal">
+                      {{ comment.created_on }}
+                    </span>
+                  </p>
+                  {{ comment.body | linebreaks }}
+                </div>
+                {% endfor %}
+                
+                {% if new_comment %}
+                <div class="alert alert-success" role="alert">
+                  Your comment is awaiting moderation
+                </div>
+                {% else %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <h5 style="font-family:'Quicksand';">¡Deja un Comentario!</h5>
+                   
+                  </li>
+                <form method="post" style="margin-top: 1.3em;">
+                    {{ comment_form.as_p }}
+                    {% csrf_token %}
+                  <button type="submit" class="btn btn-primary  btn-lg">Enviar Comentario</button>
+                </form>
+                {% endif %}
+
               </div>
             </ul>
           </div>

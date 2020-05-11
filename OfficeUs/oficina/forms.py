@@ -1,5 +1,6 @@
 from django import forms
 from .models import Oficina
+from .models import Comment
 
 class OficinaForm(forms.ModelForm):
     class Meta:
@@ -63,3 +64,9 @@ class OficinaForm(forms.ModelForm):
         'dog':'dog',
         'eventos':'Eventos'
         }
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('name', 'email', 'body')
+        
