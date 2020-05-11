@@ -33,8 +33,9 @@
 			margin-right: auto;
 		}
 		.pera{
+			position: relative;
 			background-color: white;
-			height:310px;
+			height:330px;
 			width: 460px;
 			margin:9px;
 
@@ -50,14 +51,13 @@
 		.pera_columna{
 			float: left;
 			width: 50%;
-			height: 300px;
+			height: 320px;
 			padding: 10px;
 		}
 		.no_mango{
 			max-width: 250px;
-			padding: 1rem;
-			position: relative;
-			margin-top:23px;
+			width:42%;
+			height:51px;
 			background: linear-gradient(270deg,#3aa4bd,#9064d1);
 			padding: 3px;
 			border-radius: 5px;
@@ -65,9 +65,14 @@
 		.sandia{
 			background: #ffffff;
 			color: #3aa4bd;
-			padding: 7px;
+			padding: 10px;
+			width:100%;
 			border-radius: 5px;
 			text-align: center;
+		}
+		.banana{
+			position: absolute;
+			bottom: 17px;
 		}
 	</style>
 </head>
@@ -80,7 +85,7 @@
 					<div class="pera_columna">
 						<img src={{oficina.foto}} class="manzana">
 						<h4><b>{{oficina.nombre}}</b></h4>
-						<a href="#" class="banana"><div class="no_mango"><div class="sandia"><b>Editar</b></div></div></a>
+						<a href="#" ><div class="no_mango banana"><div class="sandia"><b>Editar</b></div></div></a>
 					</div>
 					<div class="pera_columna">
 						<table>
@@ -110,8 +115,7 @@
 								<script>metodo({{oficina.calificacion}},{{oficina.id}});</script>
 							</tbody>
 						</div>
-						<br><br><br>
-						<a href="./oficinas_publicadas={{oficina.id}}" class="mango btn-primary"><b>Ver comportamiento</b></a>
+						<a href="./oficinas_publicadas={{oficina.id}}" class="banana mango btn-primary"><b>Ver comportamiento</b></a>
 					</div>
 				</div>
 			</div>
