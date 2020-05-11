@@ -206,7 +206,29 @@
       </div>
       <div class="col-md-1"></div>
   </div>
- 
+  {% if recomendaciones %}
+  <div class="row" style="margin-top: 40px">
+    <div class="col-md-3">
+      <h5 style="font-family: 'Quicksand'">Más sobre el arrendatario</h5>
+      <img src={{oficina.duenio.foto}} style="height:100px;width:100px">
+      <h6>{{oficina.duenio.nombre}}</h6>
+      <h6>{{oficina.duenio.direccion}}</h6>
+      <h6>Otros lugares que ofrece -> </h6>
+    </div>
+    <div class="col-md-9">
+      {% for lugar in recomendaciones%}
+      <a href="/oficinas/get/{{lugar.id}}" style="height:200px;width:200px; position:relative; display: inline-block;">
+      <img src={{lugar.foto}} style="height:200px;width:200px; position:absolute; bottom:0px">
+      <div style="height:100px;width:200px; position:absolute; bottom:0px; opacity:40%; background-color:black"></div>
+      <h4 style="position: absolute; text-shadow: 2px 2px 3px black;bottom:45px; left:4px; color:white; font-family: 'Quicksand'">{{lugar.nombre}}</h4>
+      <h5 style="position: absolute; text-shadow: 2px 2px 3px black; bottom:25px; left:4px;color:white; font-family: 'Quicksand'">{{lugar.precio}}</h5>
+      <h5 style="position: absolute;text-shadow:2px 2px 3px black; bottom:5px; left:4px;color:white; font-family: 'Quicksand'">{{lugar.localidad}}</h5>
+    </a>
+      {% endfor %}
+
+    </div>
+  </div>
+  {% endif %}
 
   <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>

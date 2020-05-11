@@ -20,7 +20,7 @@ def get(request,pagina):
 def get_oficina_dado_id(request,ide):
     template=loader.get_template('oficina/detail.html')
     oficina = get_oficina(ide)
-    if int(oficina.duenio.id)==877:
+    if int(oficina.duenio.id)==876 or int(oficina.duenio.id)==877 or int(oficina.duenio.id)==878:
         recomendaciones = moon.get_recomendaciones(oficina.duenio.id)
     else:
         recomendaciones = None
