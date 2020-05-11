@@ -1,5 +1,6 @@
 <html>
 <head>
+  {% load app_filters %}
   {% load static %}
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -53,7 +54,9 @@
       </div>
       <div class="col-md-3">
         <h3>{{oficina.nombre}}</h3>
-        <h4>Calle 75 #49-10</h4>
+        {% with oficina.ubicacion|split:"," as skills %}
+        <h4>Calle {{skills.0}} #{{skills.1}}-{{skills.2}}</h4>
+        {% endwith %}
         <h4>{{oficina.localidad}}</h4>
         <h4>{{oficina.tipo_contrato}}</h4>
       </div>
