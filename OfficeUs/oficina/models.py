@@ -44,3 +44,5 @@ class Historial(models.Model):
     arrendatario = models.CharField(max_length=300)
     tipo_cliente = models.CharField(max_length=30)
     calificacion = models.FloatField(validators=[MaxValueValidator(5),MinValueValidator(0)])
+    def __str__(self):
+        return "{'calificacion':%s ,'cantidad':%s}" % (self.calificacion, self.cantidad)

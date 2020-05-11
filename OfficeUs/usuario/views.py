@@ -162,14 +162,18 @@ def usuario_profile(request,id,opcion):
     try:
         id_oficina=opcion[opcion.index('=')+1:len(opcion)]
         idd=ol.get_oficina(int(id_oficina))
-        print("ID OFICINA LA QUE", idd)
         opcion='estadisticas_oficina'
+        historial = get_historial_dado_oficina(int(id_oficina))
         line = armarEstadisticasInteresados("myChart","ingresos")
+        meses_cal = [estadisticas_mes("Ene", "calificacion"),estadisticas_mes("Feb", "calificacion"),estadisticas_mes("Mar", "calificacion"),estadisticas_mes("Abr", "calificacion")]
+        meses_ingresos = [estadisticas_mes("Ene", "cantidad"),estadisticas_mes("Feb", "cantidad"),estadisticas_mes("Mar", "cantidad"),estadisticas_mes("Abr", "cantidad")]
     except:
+        meses_cal= None
+        meses_ingresos = None
+        historial = None
         line = armarEstadisticasInteresados("myFirstChart","interesados")
         idd=None
-    print("ID OFICINA", idd)
-    context={'oficina':idd,'user':us,'correo' : id,'opcion':opcion,'output': line.render(), 'calificacion':d2.render(),'mercado':pie.render(),"historial":line2.render(),'oficinas':oficinas }
+    context={'meses_cal':meses_cal,'meses_ingresos':meses_ingresos,'historial2':historial,'oficina':idd,'user':us,'correo' : id,'opcion':opcion,'output': line.render(), 'calificacion':d2.render(),'mercado':pie.render(),"historial":line2.render(),'oficinas':oficinas }
     return HttpResponse(template.render(context,request))
 
 #@login_required
