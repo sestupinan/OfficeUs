@@ -1,6 +1,9 @@
 from django.db import models
 from ..models import Usuario
-from oficina.models import Oficina
+from oficina.models import Oficina, Historial
+
+def get_historial_dado_oficina(id):
+	return Historial.objects.filter(oficina=id)
 
 def get_usuario(ide):
 	return Usuario.objects.get(id=ide)

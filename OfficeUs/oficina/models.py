@@ -34,3 +34,13 @@ class Oficina(models.Model):
     eventos = models.IntegerField(validators=[MaxValueValidator(1),MinValueValidator(0)])
     def __str__(self):
         return '%s-%s-%s' % (self.nombre, self.precio, self.tipo_contrato)
+
+class Historial(models.Model):
+    id = models.IntegerField(primary_key=True)
+    oficina = models.ForeignKey(Oficina, on_delete=models.CASCADE)
+    cantidad = models.FloatField(null=True, blank=True, default=None)
+    tipo = models.CharField(max_length=20)
+    fecha_hora = models.CharField(max_length=200)
+    arrendatario = models.CharField(max_length=300)
+    tipo_cliente = models.CharField(max_length=30)
+    calificacion = models.FloatField(validators=[MaxValueValidator(5),MinValueValidator(0)])
