@@ -32,6 +32,9 @@ class Oficina(models.Model):
     chillout = models.IntegerField(validators=[MaxValueValidator(1),MinValueValidator(0)])
     dog = models.IntegerField(validators=[MaxValueValidator(1),MinValueValidator(0)])
     eventos = models.IntegerField(validators=[MaxValueValidator(1),MinValueValidator(0)])
+    visitantes = models.IntegerField(null=True, blank=True, default=None)
+    interesados = models.IntegerField(null=True, blank=True, default=None)
+    porcentaje = models.FloatField(null=True, blank=True, default=None)
     def __str__(self):
         return '%s-%s-%s' % (self.nombre, self.precio, self.tipo_contrato)
 
